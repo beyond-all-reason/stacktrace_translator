@@ -11,10 +11,9 @@ def extract(tar_url, extract_path='.'):
 	tar = tarfile.open(tar_url, 'r')
 	for item in tar:
 		print ("item name", item.name)
-		if item.name == "./spring.dbg":
+		if item.name == "./spring.dbg" or item.name.startswith( "./AI"):
 			tar.extract(item, extract_path)
 			print ("Extracted spring.dbg", extract_path)
-			break
 		if item.name.find(".tgz") != -1 or item.name.find(".tar") != -1:
 			extract(item.name, "./" + item.name[:item.name.rfind('/')])
 			
@@ -38,8 +37,9 @@ for filename in os.listdir(os.getcwd()):
 		extract(filename)
 
 runcmd ("rm spring_dbg.7z")
-runcmd ("7za a spring_dbg.7z spring.dbg")
+runcmd ("7za a spring_dbg.7z spring.dbg ./AI")
 runcmd ("mv spring_dbg.7z ./"+targetdir+'/')
- 
+
+runcmd ("rm -r ./AI") 
 runcmd ("rm spring.dbg")
 runcmd ("rm "+symboltgz)
