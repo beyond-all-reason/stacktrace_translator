@@ -146,6 +146,10 @@ def best_matching_module(needle, haystack):
 		needle = '%s/SkirmishAI.dll' % parts[-3]
 	else:
 		needle = parts[-1]
+	log.debug("parts %s", str(parts))
+	log.debug("haystack %s", str(haystack))
+	if needle == 'BARb/SkirmishAI.dll' :
+		needle = 'BARb/stable/SkirmishAI.dbg/SkirmishAI.dll' 
 
 	log.debug('best_matching_module: looking for %s', needle)
 	for module in haystack:
