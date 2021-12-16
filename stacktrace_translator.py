@@ -125,7 +125,7 @@ def fatal(message):
 	raise FatalError(message)   # for client
 
 
-def best_matching_module(needle, haystack):
+def best_matching_module(needle, haystack): # a module is a .exe or a .dll
 	'''\
 	Choose the best matching module, based on longest common suffix.
 
@@ -227,6 +227,9 @@ def collect_stackframes(infolog):
 	log.info('\t[OK]')
 	return frames, frame_count
 
+
+
+
 def get_modules(dbgfile):
 	'''
 	returns a list of all available files in a 7z archive
@@ -317,6 +320,7 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile):
 			cmd = [ADDR2LINE, '-j', '.text', '-e', tempfile.name]
 		else:
 			cmd = [ADDR2LINE, '-e', tempfile.name]
+		log.debug("Sent addresses:" + ",".join(addresses))
 		log.debug('\tCommand line: ' + ' '.join(cmd))
 		addr2line = Popen(cmd, stdin = PIPE, stdout = PIPE, stderr = PIPE)
 		if addr2line.poll() == None:
@@ -327,6 +331,7 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile):
 			log.debug('%s stderr: %s' % (ADDR2LINE, stderr))
 		if addr2line.returncode != 0:
 			fatal('%s exited with status %s' % (ADDR2LINE, addr2line.returncode))
+		log.debug('stderr addr2line: %s' %(stdout))
 		log.info('\t\t[OK]')
 
 	def fixup(addr, file, line):
