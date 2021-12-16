@@ -2,9 +2,7 @@
 
 /*
 	Simple Frontend for the Stacktrace translator on http://springrts.com:8000/
-
 	Note: the file lastrun has to be writable by the webserver
-
 */
 
 
@@ -82,6 +80,7 @@ function isValidURL($url){
 	posts to pastebin, returns url
 */
 function pastebin($text, $name=""){
+	/*
 	$name=substr($name,strlen($name)-23); //limit name to 23 chars
 	$request = http_build_query(array( 'paste_code' => $text,
 		'name' => 'spring-stacktrace',
@@ -95,6 +94,7 @@ function pastebin($text, $name=""){
 		'content' => $request)));
 		$file = file_get_contents("http://paste.springfiles.com/api/create", false, $context);
 		return $file;
+	*/
 }
 
 /**
@@ -136,7 +136,7 @@ function getinfolog(){
 		if (!isValidURL($url)){
 			die("Invalid url!");
 		}
-		$infolog=file_get_contents($url,false, NULL, -1, 100000); //retrieve remote infolog.txt
+		$infolog=file_get_contents($url,false, NULL, -1, 1000000); //retrieve remote infolog.txt
 	}else{
 		if (array_key_exists('request',$_REQUEST))
 			$infolog=$_REQUEST['request'];
@@ -190,9 +190,9 @@ function parse_result($res,$ver,$commit,$branch){
 
 			if (!empty($filename) && ($filename[0]=='r')){
 				if (!empty($commit)){
-					$textwithlinks.='<td><a target="_blank" href="https://github.com/beyond-all-reason/spring/blob/BAR/'.$filename.'#L'.$line.'">'.$line.'</a></td>';
+					$textwithlinks.='<td><a target="_blank" href="https://github.com/beyond-all-reason/spring/blob/BAR105/'.$filename.'#L'.$line.'">'.$line.'</a></td>';
 				} else {
-					$textwithlinks.='<td><a target="_blank" href="http://github.com/beyond-all-reason/spring/tree/BAR/'.$filename.'#L'.$line.'">'.$line.'</a></td>';
+					$textwithlinks.='<td><a target="_blank" href="http://github.com/beyond-all-reason/spring/tree/BAR105/'.$filename.'#L'.$line.'">'.$line.'</a></td>';
 				}
 			}else {
 				$textwithlinks.="<td>$line</td>";
