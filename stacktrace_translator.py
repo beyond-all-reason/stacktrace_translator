@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Author: Tobi Vollebregt
 # Thanks to bibim for providing the perl source of his translator.
 # requires mingw32-binutils and p7zip to work
@@ -6,6 +6,7 @@
 import os, re, sys
 import logging
 import traceback
+import pefile
 from tempfile import NamedTemporaryFile
 from subprocess import Popen, PIPE
 
@@ -50,6 +51,7 @@ RE_SUFFIX = r'(?:[\r\n]+$)?'
 #[t=00:02:04.492434][f=0000536] Error: 	(0) C:\Users\xxx\Documents\My Games\Spring\engine\spring_bar_{BAR}104.0.1-1695-gbd6b256_windows-64-minimal-portable\spring.exe [0x004DD130]
 #Spring 104.0.1-1695-gbd6b256 BAR
 RE_STACKFRAME = RE_PREFIX + r'\(\d+\)\s+(.*(?:\.exe|\.dll))(?:\([^)]*\))?\s+\[(0x[\dA-Fa-f]+)\]' + RE_SUFFIX
+RE_EXEBASE = RE_PREFIX + r'(0x[0-9a-f]{8,16})\s+spring' + RE_SUFFIX
 ## regex for RC12 versions: first two parts are
 ## mandatory, last two form one optional group
 RE_VERSION_NAME_PREFIX = "(?:[sS]pring)"
@@ -95,6 +97,7 @@ RE_VERSION_LINES = [
 RE_DEBUG_FILENAME = '.*spring_dbg.7z' #old
 #RE_DEBUG_FILENAME = '.*spring.*.tgz.7z' #new one needs unzippingm
 
+EXEBASE = 0
 
 
 def test_version(string):
@@ -244,7 +247,7 @@ def get_modules(dbgfile):
 		fatal('%s exited with status %s' % (SEVENZIP, sevenzip.returncode))
 
 	files = []
-	for line in stdout.split('\n'):
+	for line in stdout.decode('utf-8').splitlines():
 		match = re.match("^.* ([a-zA-Z\/0-9\.]+dbg)$", line)
 		if match:
 			files.append(match.group(1))
@@ -297,6 +300,19 @@ def collect_modules(config, branch, rev, platform, dbgsymdir = None):
 	log.info('\t[OK]')
 	return dbgfile, modules
 
+
+def detect_exebase(infolog):
+	match = re.search(RE_EXEBASE, infolog, re.MULTILINE)
+	global EXEBASE
+	EXEBASE = int(match.group(4), 16) if match else 0
+
+def update_base(module, addresses, tempfile):
+	pe = pefile.PE(name=tempfile.name, fast_load=True)
+	image_base = pe.OPTIONAL_HEADER.ImageBase
+	load_base = 0 if module.endswith('.dll') else EXEBASE
+	return [hex(int(x, 16) - load_base + image_base) for x in addresses]
+
+
 def translate_module_addresses(module, debugarchive, addresses, debugfile):
 	'''\
 	Translate addresses in a module to (module, address, filename, lineno) tuples
@@ -316,15 +332,13 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile):
 		log.info('\t\t[OK]')
 
 		log.info('\tTranslating addresses for module %s...' % module)
-		if module.endswith('.dll'):
-			cmd = [ADDR2LINE, '-j', '.text', '-e', tempfile.name]
-		else:
-			cmd = [ADDR2LINE, '-e', tempfile.name]
+		addresses = update_base(module, addresses, tempfile)
+		cmd = [ADDR2LINE, '-e', tempfile.name]
 		log.debug("Sent addresses:" + ",".join(addresses))
 		log.debug('\tCommand line: ' + ' '.join(cmd))
 		addr2line = Popen(cmd, stdin = PIPE, stdout = PIPE, stderr = PIPE)
 		if addr2line.poll() == None:
-			stdout, stderr = addr2line.communicate('\n'.join(addresses))
+			stdout, stderr = addr2line.communicate('\n'.join(addresses).encode('utf-8'))
 		else:
 			stdout, stderr = addr2line.communicate()
 		if stderr:
@@ -341,7 +355,7 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile):
 				break
 		return module, addr, file, int(line)
 
-	return [fixup(addr, *line.split(':')) for addr, line in zip(addresses, stdout.splitlines())]
+	return [fixup(addr, *line.split(':')) for addr, line in zip(addresses, stdout.decode('utf-8').splitlines())]
 
 
 def translate_(module_frames, frame_count, modules, modulearchive):
@@ -353,7 +367,7 @@ def translate_(module_frames, frame_count, modules, modulearchive):
 
 	module_names = modules.keys()
 	translated_stacktrace = [None] * frame_count
-	for module, frames in module_frames.iteritems():
+	for module, frames in iter(module_frames.items()):
 		module_name = best_matching_module(module, module_names)
 		indices, addrs = zip(*frames)   # unzip
 		if module_name:
@@ -431,6 +445,7 @@ def translate_stacktrace(infolog, dbgsymdir = None):
 		config, branch, rev = detect_version_details(infolog)
 		module_frames, frame_count = collect_stackframes(infolog)
 		debugarchive, modules = collect_modules(config, branch, '', '', dbgsymdir)
+		detect_exebase(infolog)
 
 		if (debugarchive == None):
 			fatal("No debug-archive(s) found for infolog.txt\n"+ '\n'.join( str(c) for c in [config, branch, rev,' \n '.join(str(mf) for mf in module_frames), frame_count,dbgsymdir]) )
