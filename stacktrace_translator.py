@@ -8,7 +8,7 @@ import logging
 import traceback
 from tempfile import NamedTemporaryFile
 from subprocess import Popen, PIPE
-
+import time
 
 # Paths to required helper programs.
 #ADDR2LINE = r'/usr/bin/i686-w64-mingw32-addr2line'
@@ -34,11 +34,13 @@ LISTEN_ADDR = ('', 8000)
 # path to test file
 TESTFILE = os.path.join(WWWROOT, "default/release/93.2.1-56-gdca244e/win32/{release}93.2.1-56-gdca244e_spring_dbg.7z")
 
-# Match common pre- and suffix on infolog lines. This also allows
+# Match common pre- and suffix on infolog lines
+# This is the common prefix:  [t=00:25:33.861200][f=0024446]
+# This also allows
 # "empty" prefixes followed by any amount of trailing whitespace.
 # the a-zA-Z class can be "Warning" or "Error"
 #RE_PREFIX = r'^((\[t=([0-9:\.])*\])?(?:\[(?:f=)?\s*\d+\]\s*)?(?:[a-zA-Z]+:))\s*'
-RE_PREFIX = r'^((\[t=([0-9:\.])*\])?(?:\[(?:f=)?\s*\-?\d+\]\s*)?(?:[a-zA-Z]+:))\s*' # teifion says this is good for f=-00
+RE_PREFIX = r'^((\[t=([0-9:\.])*\])?(?:\[(?:f=)?\s*\-?\d+\]\s*)?(?:[a-zA-Z]+:)?).*\s*' # teifion says this is good for f=-00
 #RE_PREFIX = r'^(\[t=([0-9:\.])*\])?(?:\[(?:f=)?\s*\d+\]\s*)?(?:[a-zA-Z]+:)\s*'
 #RE_PREFIX = r'^(?:\[(?:f=)?\s*\d+\]\s*)?(?:[a-zA-Z]+:)\s*' # old one
 RE_SUFFIX = r'(?:[\r\n]+$)?'
@@ -49,10 +51,17 @@ RE_SUFFIX = r'(?:[\r\n]+$)?'
 # NOTE: does not match format of stackframe lines on Linux
 #[t=00:02:04.492434][f=0000536] Error: 	(0) C:\Users\xxx\Documents\My Games\Spring\engine\spring_bar_{BAR}104.0.1-1695-gbd6b256_windows-64-minimal-portable\spring.exe [0x004DD130]
 #Spring 104.0.1-1695-gbd6b256 BAR
+
+# [t=00:00:00.695000] Error: Spring 105.1.1-861-ge8bf8a9 BAR105 has crashed. 
+# is buggy
+
+#[t=00:00:00.795000] Error: 	(10) C:\Games\Beyond-All-Reason\data\engine\105.1.1-861-ge8bf8a9 bar\spring.exe [0x00000001409ab19b]
+
+
 RE_STACKFRAME = RE_PREFIX + r'\(\d+\)\s+(.*(?:\.exe|\.dll))(?:\([^)]*\))?\s+\[(0x[\dA-Fa-f]+)\]' + RE_SUFFIX
 ## regex for RC12 versions: first two parts are
 ## mandatory, last two form one optional group
-RE_VERSION_NAME_PREFIX = "(?:[sS]pring)"
+RE_VERSION_NAME_PREFIX = "(Error:)? ?(?:[sS]pring)"
 RE_VERSION_STRING_RC12 = "([0-9]+\.[0-9]+[\.0-9]*(?:-[0-9]+-g[0-9a-f]+)?)"
 RE_VERSION_BRANCH_NAME = "([a-zA-Z0-9\-]+)?"
 RE_VERSION_BUILD_FLAGS = "?(?:\s*\((?:[a-zA-Z0-9\-]+\)))?"
@@ -61,6 +70,8 @@ RE_VERSION =                        \
 	RE_VERSION_STRING_RC12 + " ?" + \
 	RE_VERSION_BRANCH_NAME + " ?" + \
 	RE_VERSION_BUILD_FLAGS
+# RE_PREFIX +
+RE_MODULE_OFFSET = r'^(\[t=([0-9:\.])*\])?(?:\[(?:f=)?\s*\-?\d+\]\s*)? Error: (0x[a-fA-F0-9]+)\t([a-zA-Z0-9\-]+)' + RE_SUFFIX
 
 # Match complete line containing version string.
 # NOTE:
@@ -69,15 +80,16 @@ RE_VERSION =                        \
 #   a header and parse that?
 RE_VERSION_LINES = [
 	x % (RE_PREFIX, RE_VERSION, RE_SUFFIX) for x in [
-		r'%sStacktrace for %s:%s',
+		r'%sStacktrace for %s:%s', # [t=00:02:35.214753][f=-000001] Error: Stacktrace for Spring 105.1.1-1354-g72b2d55 BAR105:
 		r'%sStacktrace \([a-zA-Z0-9 ]+\) for %s:%s',
 
 		## legacy version patterns
-		r'%s%s has crashed\.%s',
+		r'%s%s has crashed\.%s', # [t=00:25:33.861200][f=0024446] Error: Spring 105.1.1-1354-g72b2d55 BAR105 has crashed.
+		r'%s Error handler invoked for %s\.%s', # [t=01:53:30.145423][f=-000001] Error: Error handler invoked for Spring 105.1.1-1354-g72b2d55 BAR105.
 		r'%s\[Watchdog\] Hang detection triggered for %s\.%s',
 		r'%sSegmentation fault \(SIGSEGV\) in %s%s',
 		r'%sAborted \(SIGABRT\) in %s%s',
-		r'%sError handler invoked for %s\.%s',
+		r'%sError handler invoked for %s\.%s', # [t=00:02:35.092580][f=-000001] Error: Error handler invoked for Spring 105.1.1-1354-g72b2d55 BAR105.
 	]
 ]
 
@@ -186,7 +198,7 @@ def detect_version_details(infolog):
 	branch = None
 	for re_version_line in RE_VERSION_LINES:
 		match = re.search(re_version_line, infolog, re.MULTILINE)
-	
+		print ("Trying regex", re_version_line)
 		if match:
 			print ("RE_VERSION_LINES match.groups:",match.groups())
 			version = match.groups()[-1]
@@ -228,6 +240,30 @@ def collect_stackframes(infolog):
 	return frames, frame_count
 
 
+def get_module_offsets(infolog):
+	'''
+	'''
+	log.info('Collecting getting module offsets...' + RE_MODULE_OFFSET)
+	module_offsets = {} # matches module name to hex offset
+	
+	#for module, address in re.findall(RE_STACKFRAME, infolog, re.MULTILINE):
+	for rematch in re.findall(RE_MODULE_OFFSET, infolog, re.MULTILINE):
+		print(rematch)
+		address = rematch[-2]
+		module = rematch[-1]
+		module_offsets[module] = address
+		
+	#[t=01:12:42.524104][f=0006608] Error: Exception Address: 0x00007ff785cc54d0
+	for rematch in re.findall(r'^(\[t=([0-9:\.])*\])?(?:\[(?:f=)?\s*\-?\d+\]\s*)? Error: Exception Address: (0x[a-fA-F0-9]+)' + RE_SUFFIX, infolog, re.MULTILINE):
+		print ("Found Error: Exception Address:", rematch[-1])
+		if "spring" in module_offsets:
+			module_offsets["spring"] = rematch[-1][0:10] + module_offsets["spring"][-8:]
+			print ("replacing module offset with :", module_offsets["spring"])
+	log.debug('Got module offsets: %s', str(module_offsets))
+	log.info('\t[OK]')
+	return module_offsets
+#btw the correct formula is 
+#  (exception address & 0xFFFFFFFF -  0x00000000858b0000    (module addresss)) + 0x1400000000 
 
 
 def get_modules(dbgfile):
@@ -297,7 +333,7 @@ def collect_modules(config, branch, rev, platform, dbgsymdir = None):
 	log.info('\t[OK]')
 	return dbgfile, modules
 
-def translate_module_addresses(module, debugarchive, addresses, debugfile):
+def translate_module_addresses(module, debugarchive, addresses, debugfile, offset):
 	'''\
 	Translate addresses in a module to (module, address, filename, lineno) tuples
 	by invoking addr2line exactly once on the debugging symbols for that module.
@@ -314,18 +350,35 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile):
 		if sevenzip.returncode != 0:
 			fatal('%s exited with status %s' % (SEVENZIP, sevenzip.returncode))
 		log.info('\t\t[OK]')
-
+		log.info(str(stdout))
 		log.info('\tTranslating addresses for module %s...' % module)
 		if module.endswith('.dll'):
 			cmd = [ADDR2LINE, '-j', '.text', '-e', tempfile.name]
 		else:
 			cmd = [ADDR2LINE, '-e', tempfile.name]
-		log.debug("Sent addresses:" + ",".join(addresses))
+		addresstring = "\n".join(addresses)
+		log.debug("Originial addresses" + addresstring)
+		if offset != 0:
+			#addresstring = "\n".join([hex(int(addr, 16) + offset)  for addr in addresses]) # old does not work
+			for addr in addresses:
+				addrint = int(addr, 16)
+				log.debug("remap %s, masked %s - %s",hex(addrint), hex(addrint & 0xffffffff), hex(offset))
+			addresstring = "\n".join([hex((int(addr, 16) & 0xffffffff) - (offset & 0xffffffff) + 0x140000000)  for addr in addresses]) # old does not work
+		log.debug("Sent addresses:" + addresstring)
 		log.debug('\tCommand line: ' + ' '.join(cmd))
+		
+		addr2linefilename = "addr2line-%s.txt"%(time.strftime("%Y%m%d-%H%M%S"))
+		log.info('Keeping record of addr2line at: %s'%(addr2linefilename))
+		addr2linefile = open(addr2linefilename,'w')
+		addr2linefile.write(addresstring)
+		addr2linefile.close()
+		
 		addr2line = Popen(cmd, stdin = PIPE, stdout = PIPE, stderr = PIPE)
 		if addr2line.poll() == None:
-			stdout, stderr = addr2line.communicate('\n'.join(addresses))
+			log.info("Communicating addresstring to addr2line")
+			stdout, stderr = addr2line.communicate(addresstring)
 		else:
+			log.error("Addr2line communication failed!, addr2line.poll() was not None")
 			stdout, stderr = addr2line.communicate()
 		if stderr:
 			log.debug('%s stderr: %s' % (ADDR2LINE, stderr))
@@ -339,12 +392,16 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile):
 			if psu in file:
 				file = file[file.index(psu)+len(psu):]
 				break
-		return module, addr, file, int(line)
+		try:
+			int(line)
+			return module, addr, file, int(line)
+		except:
+			return module, addr, file, 1
 
 	return [fixup(addr, *line.split(':')) for addr, line in zip(addresses, stdout.splitlines())]
 
 
-def translate_(module_frames, frame_count, modules, modulearchive):
+def translate_(module_frames, frame_count, modules, modulearchive, module_offsets):
 	'''\
 	Translate the stacktrace given in (module_frames, frame_count) by repeatedly
 	invoking addr2line on the debugging data for the modules.
@@ -357,7 +414,12 @@ def translate_(module_frames, frame_count, modules, modulearchive):
 		module_name = best_matching_module(module, module_names)
 		indices, addrs = zip(*frames)   # unzip
 		if module_name:
-			translated_frames = translate_module_addresses(module, modules[module_name], addrs, modulearchive)
+			offset = 0
+			print("MODULE NAME",module_name, module)
+			if 'spring' in module_name and 'spring' in module_offsets:
+				offset = int(module_offsets['spring'],16)
+
+			translated_frames = translate_module_addresses(module, modules[module_name], addrs, modulearchive,offset)
 			for index, translated_frame in zip(indices, translated_frames):
 				translated_stacktrace[index] = translated_frame
 		else:
@@ -406,9 +468,15 @@ def translate_stacktrace(infolog, dbgsymdir = None):
 		 ...
 		 ('C:\\WINDOWS\\system32\\kernel32.dll(RegisterWaitForInputIdle+0x49)', '0x7C7E7077', '??', 0)]
 	'''
-
+	print ("begin translate")
 	log.info('----- Start of translation process -----')
-
+	
+	
+	infologfilename = "infolog-%s.txt"%(time.strftime("%Y%m%d-%H%M%S"))
+	log.info('Keeping record of infolog at: %s'%(infologfilename))
+	infologfile = open(infologfilename, 'w')
+	infologfile.write(infolog)
+	infologfile.flush()
 	# TODO: add module checksum dump to spring, add code here to parse those.
 
 	# With checksums, the idea is:
@@ -426,10 +494,11 @@ def translate_stacktrace(infolog, dbgsymdir = None):
 	#    same version as Spring.., but we'll have to live with that.)
 	# 3) download debugging symbols for a module directly from config/branch/rev/...
 	# 4) perform translation
-
+	translated_stacktrace = ""
 	try:
 		config, branch, rev = detect_version_details(infolog)
 		module_frames, frame_count = collect_stackframes(infolog)
+		module_offsets = get_module_offsets(infolog)
 		debugarchive, modules = collect_modules(config, branch, '', '', dbgsymdir)
 
 		if (debugarchive == None):
@@ -437,7 +506,7 @@ def translate_stacktrace(infolog, dbgsymdir = None):
 		if frame_count == 0:
 			fatal("No stack-trace found in infolog.txt")
 
-		translated_stacktrace = translate_(module_frames, frame_count, modules, debugarchive)
+		translated_stacktrace = translate_(module_frames, frame_count, modules, debugarchive, module_offsets)
 
 	except FatalError:
 		# FatalError is intended to reach the client => re-raise
@@ -448,7 +517,9 @@ def translate_stacktrace(infolog, dbgsymdir = None):
 		log.critical(traceback.format_exc())
 		# Throw a new exception without leaking too much information
 		raise FatalError('unhandled exception')
-
+	
+	infologfile.write(str(translated_stacktrace))
+	infologfile.close()
 	log.info('----- End of translation process -----')
 	return translated_stacktrace
 
@@ -477,21 +548,40 @@ def run_xmlrpc_server():
 		os.remove(PIDFILE)
 
 
+testmodules = """
+[t=00:18:27.165915][f=-000001] Error: DLL information:
+[t=00:18:27.165993][f=-000001] Error: 0x000000001dd60000	spring
+[t=00:18:27.166013][f=-000001] Error: 0x00000000cfef0000	ntdll
+[t=00:18:27.166039][f=-000001] Error: 0x00000000cf9c0000	KERNEL32
+[t=00:18:27.166057][f=-000001] Error: 0x00000000cd850000	KERNELBASE
+[t=00:18:27.166082][f=-000001] Error: 0x00000000cdf30000	ADVAPI32
+[t=00:18:27.166097][f=-000001] Error: 0x00000000cfce0000	msvcrt
+[t=00:18:27.166112][f=-000001] Error: 0x00000000ce0a0000	sechost
+[t=00:18:27.166137][f=-000001] Error: 0x00000000cfd80000	RPCRT4
+[t=00:18:27.166155][f=-000001] Error: 0x00000000cf0d0000	imagehlp
+[t=00:18:27.166171][f=-000001] Error: 0x00000000cde30000	ucrtbase
+[t=00:18:27.166188][f=-000001] Error: 0x00000000ce510000	SHELL32
+[t=00:18:27.166213][f=-000001] Error: 0x00000000c6590000	GLU32
+[t=00:18:27.166229][f=-000001] Error: 0x00000000cdc80000	msvcp_win
+"""
 def main(argc, argv):
 	if (argc > 1):
 		logging.basicConfig(format='%(message)s')
 		log.setLevel(logging.DEBUG)
-
+		
+		get_module_offsets(testmodules)
 		if (argv[1] == '--test'):
 			import doctest
 			doctest.testmod(optionflags = doctest.NORMALIZE_WHITESPACE + doctest.ELLIPSIS)
 		else:
 			try:
 				infolog = open(argv[1], 'r')
+				infologcontents = infolog.read()
+				infologcontents = infologcontents.replace('\r\n', '\n')
 				dbgsymdir = ((argc >= 3) and argv[2]) or None
 
 				## config, branch, githash = detect_version_details(infolog.read())
-				stacktrace = translate_stacktrace(infolog.read(), dbgsymdir)
+				stacktrace = translate_stacktrace(infologcontents, dbgsymdir)
 				for address in stacktrace:
 					print(address)
 
@@ -509,4 +599,3 @@ def main(argc, argv):
 
 if (__name__ == '__main__'):
 	main(len(sys.argv), sys.argv)
-
