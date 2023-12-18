@@ -20,7 +20,7 @@ def extract(tar_url, extract_path='.'):
 			print ("Extracted", item.name,  extract_path)
 		if item.name.find(".tgz") != -1 or item.name.find(".tar") != -1:
 			extract(item.name, "./" + item.name[:item.name.rfind('/')])
-
+ 
 def download_unpack_symbols(archiveurl):
 	print ("Pass the parameter to the output of the github actions windows debug build as a command line arg to this script")
 	symboltgz = archiveurl.rpartition("/")[2]
@@ -41,11 +41,11 @@ def download_unpack_symbols(archiveurl):
 	for filename in os.listdir(os.getcwd()):
 		if engine_version in filename and filename.endswith(".tgz"):
 			extract(filename)
-	runcmd("mv install/* .")
+	runcmd("mv -f install/* .")
 
 	runcmd ("rm spring_dbg.7z")
-	runcmd ("7za a spring_dbg.7z spring.dbg ./AI")
-	runcmd ("mv spring_dbg.7z ./"+targetdir+'/')
+	runcmd ("7za a -mx=1 -y spring_dbg.7z spring.dbg ./AI") # dont compress it much for speed
+	runcmd ("mv -f spring_dbg.7z ./"+targetdir+'/')
 
 	runcmd ("rm -r ./AI") 
 	runcmd ("rm spring.dbg")
