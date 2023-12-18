@@ -138,7 +138,7 @@ def test_version(string):
 	return re.search(RE_VERSION, string, re.MULTILINE).groups()
 
 # Set up application log.
-logging.basicConfig(filename = f'log_stacktrace_translator_{time.strftime("%Y%m%d-%H%M%S")}.txt',level = logging.DEBUG)
+logging.basicConfig(level = logging.DEBUG, handlers = [logging.StreamHandler(), logging.FileHandler(f'log_stacktrace_translator_{time.strftime("%Y%m%d-%H%M%S")}.txt')])
 log = logging.getLogger('stacktrace_translator')
 log.setLevel(logging.DEBUG)
 
@@ -401,13 +401,18 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile, offse
 		log.debug("vs the pefile one which is :"+str(EXEBASE))
 
 		addresses = update_base(module, addresses, tempfile)
+		log.debug(f'pefile addresses {", ".join(addresses)}')
+		addresstring = '\n'.join(addresses)
 
+		"""
 		if offset != 0:
 			#addresstring = "\n".join([hex(int(addr, 16) + offset)  for addr in addresses]) # old does not work
 			for addr in addresses:
 				addrint = int(addr, 16)
 				log.debug("remap %s, masked %s - %s",hex(addrint), hex(addrint & 0xffffffff), hex(offset))
 			addresstring = "\n".join([hex((int(addr, 16) & 0xffffffff) - (offset & 0xffffffff) + 0x140000000)  for addr in addresses]) # old does not work
+		"""
+
 		log.debug("Sent addresses:" + addresstring)
 		log.debug('\tCommand line: ' + ' '.join(cmd))
 		
