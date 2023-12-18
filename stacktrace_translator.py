@@ -7,7 +7,7 @@ import os, re, sys
 import logging
 import traceback
 from tempfile import NamedTemporaryFile
-from subprocess import Popen, PIPE
+from subprocess import Popen, PIPE, TimeoutExpired
 import time
 import pefile
 from update_debug_symbols import get_for_engineversion
@@ -421,18 +421,40 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile, offse
 		addr2linefile = open(addr2linefilename,'w')
 		addr2linefile.write(addresstring)
 		addr2linefile.close()
-		
+
 		addr2line = Popen(cmd, stdin = PIPE, stdout = PIPE, stderr = PIPE)
-		if addr2line.poll() == None:
-			log.info("Communicating addresstring to addr2line")
-			stdout, stderr = addr2line.communicate(addresstring.encode('utf-8'))
-		else:
-			log.error("Addr2line communication failed!, addr2line.poll() was not None")
-			stdout, stderr = addr2line.communicate()
-		if stderr:
-			log.debug('%s stderr: %s' % (ADDR2LINE, stderr))
-		if addr2line.returncode != 0:
-			fatal('%s exited with status %s' % (ADDR2LINE, addr2line.returncode))
+		try:
+			if addr2line.poll() == None:
+				log.info("Communicating addresstring to addr2line")
+				stdout, stderr = addr2line.communicate(addresstring.encode('utf-8'), timeout = 5)
+			else:
+				log.error("Addr2line communication failed!, addr2line.poll() was not None")
+				stdout, stderr = addr2line.communicate()
+			if stderr:
+				log.debug('%s stderr: %s' % (ADDR2LINE, stderr))
+			if addr2line.returncode != 0:
+				fatal('%s exited with status %s' % (ADDR2LINE, addr2line.returncode))
+		except TimeoutExpired:
+			log.debug("addr2line unresponsive, killing and trying line-by-;line")
+			addr2line.kill()
+			stdouts = []
+			for address in addresses:
+				cmd = [ADDR2LINE, '-e', tempfile.name, address]
+				log.debug(f"Trying line by line: {cmd}")
+				addr2line = Popen(cmd, stdin = PIPE, stdout = PIPE, stderr = PIPE)
+				try: 
+					stdout, stderr = addr2line.communicate(timeout = 5)
+				except TimeoutExpired:
+					log.debug(f"Address timeouted:{address}") 
+					addr2line.kill()
+				else:
+					log.debug(f"Address resolved: {address} to {stdout}")
+					stdouts.append(stdout)
+			
+			stdout = '\n'.join(stdouts)
+
+
+
 		log.debug('stderr addr2line: %s' %(stdout))
 		log.info('\t\t[OK]')
 
