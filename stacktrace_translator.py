@@ -139,7 +139,7 @@ def test_version(string):
 
 # Set up application log.
 logging.basicConfig(level = logging.DEBUG, handlers = [logging.StreamHandler(), logging.FileHandler(f'log_stacktrace_translator_{time.strftime("%Y%m%d-%H%M%S")}.txt')])
-log = logging.getLogger('stacktrace_translator')
+log = logging.getLogger(' ')
 log.setLevel(logging.DEBUG)
 
 
@@ -318,9 +318,10 @@ def collect_modules(config, branch, rev, platform, dbgsymdir = None):
 		log.info(f'No dbgsymdir specified, using {WWWROOT}/{config}/{branch}/{rev}/{platform}')
 		dbgsymdir = os.path.join(WWWROOT, config, branch, rev, platform)
 
-	log.debug(dbgsymdir)
+	log.debug(f'Using dir {dbgsymdir}')
 
 	if not os.path.isdir(dbgsymdir):
+		log.info(f"Debug symbol directory {dbgsymdir} does not exist.")
 		try:
 			log.info(f"Attempting to download debug symbols for {branch}")
 			get_for_engineversion(branch) #expects 105.1.1-2127-g9568247
@@ -333,6 +334,7 @@ def collect_modules(config, branch, rev, platform, dbgsymdir = None):
 	dbgfile = None
 
 	for filename in os.listdir(dbgsymdir):
+		log.debug(f"Is {filename} a dbg file?")
 		match = re.match(RE_DEBUG_FILENAME, filename)
 		if match:
 			dbgfile = os.path.join(dbgsymdir, filename)
@@ -438,6 +440,7 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile, offse
 			log.debug("addr2line unresponsive, killing and trying line-by-;line")
 			addr2line.kill()
 			stdouts = []
+			goodaddresses = []
 			for address in addresses:
 				cmd = [ADDR2LINE, '-e', tempfile.name, address]
 				log.debug(f"Trying line by line: {cmd}")
@@ -450,8 +453,9 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile, offse
 				else:
 					log.debug(f"Address resolved: {address} to {stdout}")
 					stdouts.append(stdout)
-			
-			stdout = '\n'.join(stdouts)
+					goodaddresses.append(address)
+			addresses = goodaddresses
+			stdout = b'\n'.join(stdouts)
 
 
 
