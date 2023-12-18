@@ -10,7 +10,7 @@ from tempfile import NamedTemporaryFile
 from subprocess import Popen, PIPE
 import time
 import pefile
-
+from update_debug_symbols import get_for_engineversion
 
 # documentation
 # 1. get an infolog.txt
@@ -315,12 +315,20 @@ def collect_modules(config, branch, rev, platform, dbgsymdir = None):
 	log.info('Checking debug data availability...')
 
 	if (dbgsymdir == None):
+		log.info(f'No dbgsymdir specified, using {WWWROOT}/{config}/{branch}/{rev}/{platform}')
 		dbgsymdir = os.path.join(WWWROOT, config, branch, rev, platform)
 
 	log.debug(dbgsymdir)
 
 	if not os.path.isdir(dbgsymdir):
-		fatal('No debugging symbols available, \"%s\" not a directory' % dbgsymdir)
+		try:
+			log.info(f"Attempting to download debug symbols for {branch}")
+			get_for_engineversion(branch) #expects 105.1.1-2127-g9568247
+		except:
+
+			fatal('No debugging symbols available, \"%s\" not a directory' % dbgsymdir)
+		# attempt to get the one via update_debug_symbols.py!
+
 
 	dbgfile = None
 
