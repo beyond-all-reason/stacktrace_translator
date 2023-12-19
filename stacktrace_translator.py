@@ -36,10 +36,13 @@ PATH_STRIP_UNTIL = ['/build/', '}.mingw32.cmake/']
 # Root of the directory tree with debugging symbols.
 # Must contain paths of the form config/branch/rev/...
 WWWROOT = os.path.expanduser('~/www/www/bar/stacktrace_translator')
+# if this path does not exist, that means we are running in docker, and should just handle everything locally.
+if not os.path.exists(WWWROOT):
+	WWWROOT = "."
 
 # Where to put the log & pid file when running as server.
 #LOGFILE = os.path.expanduser('~/log/stacktrace_translator.log')   # unused currently
-PIDFILE = os.path.expanduser('~/www/www/bar/stacktrace_translator/stacktrace_translator.pid')
+PIDFILE = os.path.expanduser(os.path.join(WWWROOT, 'stacktrace_translator.pid'))
 
 # Object passed into the XMLRPC server object to listen on.
 LISTEN_ADDR = ('', 8000)
@@ -428,7 +431,7 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile, offse
 		try:
 			if addr2line.poll() == None:
 				log.info("Communicating addresstring to addr2line")
-				stdout, stderr = addr2line.communicate(addresstring.encode('utf-8'), timeout = 5)
+				stdout, stderr = addr2line.communicate(addresstring.encode('utf-8'), timeout = 10)
 			else:
 				log.error("Addr2line communication failed!, addr2line.poll() was not None")
 				stdout, stderr = addr2line.communicate()
