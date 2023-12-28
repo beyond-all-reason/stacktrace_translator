@@ -13,11 +13,11 @@ WORKDIR /usr/src/app
 RUN git clone https://github.com/beyond-all-reason/stacktrace_translator.git .
 
 # Local changes:
-# COPY stacktrace_translator.py .
-# COPY update_debug_symbols.py .
+# COPY python-server/stacktrace_translator.py /python-server
+# COPY python-server/update_debug_symbols.py /python-server
 
 # Run the script when the container starts
-CMD ["python3", "stacktrace_translator.py"]
+CMD ["python3", "python-server/stacktrace_translator.py"]
 
 # The stacktrace translator listens on 8000
 EXPOSE 8000
