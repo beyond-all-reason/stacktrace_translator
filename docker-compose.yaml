@@ -1,0 +1,21 @@
+services:
+  python-server:
+    build: ./python-server
+    container_name: python-server
+    ports:
+      - "8000:8000"
+    networks:
+      - stacktrace_net
+
+  php-apache:
+    build: ./php-apache
+    container_name: php-apache
+    depends_on:
+      - python-server
+    ports:
+      - "80:80"
+    networks:
+      - stacktrace_net
+
+networks:
+  stacktrace_net:
