@@ -216,7 +216,7 @@ $res['RESULTHTML']="";
 $res['RESULTCLEAN']="";
 $res['TEXTAREA']=getinfolog();
 #$res['TRANSLATOR']="http://imolarpg.dyndns.org:8000";
-$res['TRANSLATOR']="http://127.0.0.1:8000";
+$res['TRANSLATOR']="http://python-server:8000";
 $res['INFO']="";
 
 if ($res['TEXTAREA']!=""){
