@@ -14,7 +14,7 @@ $lastrun=sys_get_temp_dir()."/.lastrun";
 function limit(){
 	global $lastrun;
 	$stat=stat($lastrun);
-	$diff=$stat['mtime'] + 7 - time();
+	$diff=$stat['mtime'] + 0 - time();
 	if ( $diff > 0 )
 		die("Please wait $diff seconds to rerun this script");
 	else
