@@ -400,13 +400,18 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile, offse
 			if os.path.exists(os.path.join(debugfile)):
 				
 				#log.info("not found %s, extracting %s "%(os.path.join(dirname, debugfile),debugarchive))
-				sevenzip = Popen([SEVENZIP, 'e', '-y', debugfile, debugarchive], stdout = PIPE, stderr = PIPE)
+				sevenzip = Popen([SEVENZIP, 'e', '-y', '-o'+dirname,debugfile, debugarchive], stdout = PIPE, stderr = PIPE)
 				stdout, stderr = sevenzip.communicate()
 				if stderr:
 					log.debug('%s stderr: %s' % (SEVENZIP, stderr))
 				if sevenzip.returncode != 0:
 					fatal('%s exited with status %s' % (SEVENZIP, sevenzip.returncode))
-				fileAlreadyExists = True
+				if os.path.exists(os.path.join(dirname, debugarchive)):
+					fileAlreadyExists = True
+					log.info("found %s, after extracting %s "%(os.path.join(dirname, debugfile),debugarchive))
+				else:
+					log.info("cannot find %s, after extracting %s "%(os.path.join(dirname, debugfile),debugarchive))
+				
 				
 			
 	
