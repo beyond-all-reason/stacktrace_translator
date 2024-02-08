@@ -44,7 +44,7 @@ def download_unpack_symbols(archiveurl):
 	runcmd("mv -f install/* .")
 
 	runcmd ("rm spring_dbg.7z")
-	runcmd ("7za a -mx=1 -y spring_dbg.7z spring.dbg ./AI") # dont compress it much for speed
+	runcmd ("7za a -ms=off -m0=lzma2 -mx=1 -y spring_dbg.7z spring.dbg ./AI") # dont compress it much for speed, 
 	runcmd ("mv -f spring_dbg.7z ./"+targetdir+'/')
 
 	runcmd ("rm -r ./AI") 
