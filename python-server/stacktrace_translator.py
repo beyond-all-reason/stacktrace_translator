@@ -378,6 +378,7 @@ def update_base(module, addresses, tempfile):
 
 
 def translate_module_addresses(module, debugarchive, addresses, debugfile, offset):
+	# note that debugfile is the .7z file, and debugarchive is the .dbg
 	'''\
 	Translate addresses in a module to (module, address, filename, lineno) tuples
 	by invoking addr2line exactly once on the debugging symbols for that module.
@@ -387,26 +388,38 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile, offse
 	
 	# lets quickly check if it already exists!
 	log.info('Checking if target archive is already extracted: module = %s, debugarchive = %s, debugfile = %s' % (module, debugarchive, debugfile))
-	dirname, fname = os.path.split(debugarchive)
-	if os.path.exists(os.path.join(dirname, debugfile)):
-		log.info("found %s"%(os.path.join(dirname, debugfile)))
-	else:
-		log.info("not found %s"%(os.path.join(dirname, debugfile)))
-		# we should extract the archive. The only problem here being the paths to multiple SkirmishAI.dbg files!
-		
+	dirname, fname = os.path.split(debugfile)
+	fileAlreadyExists = False
+	if debugarchive == "spring.dbg":
+		if os.path.exists(os.path.join(dirname, debugarchive)):
+			log.info("found %s"%(os.path.join(dirname, debugarchive)))
+			fileAlreadyExists = True
+		else:
+			log.info("not found %s, extracting %s "%(os.path.join(dirname, debugfile),debugarchive))
+			# we should extract the archive. The only problem here being the paths to multiple SkirmishAI.dbg files!
+			if os.path.exists(os.path.join(dirname, debugfile)):
+				sevenzip = Popen([SEVENZIP, 'e', '-y', debugfile, debugarchive], stdout = PIPE, stderr = PIPE)
+				stdout, stderr = sevenzip.communicate()
+				if stderr:
+					log.debug('%s stderr: %s' % (SEVENZIP, stderr))
+				if sevenzip.returncode != 0:
+					fatal('%s exited with status %s' % (SEVENZIP, sevenzip.returncode))
+				fileAlreadyExists = True
+				
+			
 	
-	
-	with NamedTemporaryFile() as tempfile:
-		log.info('\tExtracting debug symbols for module %s from archive %s...' % (module, os.path.basename(debugfile)))
-		# e = extract without path, -so = write output to stdout, -y = yes to all questions
-		sevenzip = Popen([SEVENZIP, 'e', '-so', '-y', debugfile, debugarchive], stdout = tempfile, stderr = PIPE)
-		stdout, stderr = sevenzip.communicate()
-		if stderr:
-			log.debug('%s stderr: %s' % (SEVENZIP, stderr))
-		if sevenzip.returncode != 0:
-			fatal('%s exited with status %s' % (SEVENZIP, sevenzip.returncode))
-		log.info('\t\t[OK]')
-		log.info(str(stdout))
+	with (open(os.path.join(dirname, debugarchive)) if fileAlreadyExists else NamedTemporaryFile()) as tempfile:
+		if not fileAlreadyExists:
+			log.info('\tExtracting debug symbols for module %s from archive %s...' % (module, os.path.basename(debugfile)))
+			# e = extract without path, -so = write output to stdout, -y = yes to all questions
+			sevenzip = Popen([SEVENZIP, 'e', '-so', '-y', debugfile, debugarchive], stdout = tempfile, stderr = PIPE)
+			stdout, stderr = sevenzip.communicate()
+			if stderr:
+				log.debug('%s stderr: %s' % (SEVENZIP, stderr))
+			if sevenzip.returncode != 0:
+				fatal('%s exited with status %s' % (SEVENZIP, sevenzip.returncode))
+			log.info('\t\t[OK]')
+			log.info(str(stdout))
 		log.info('\tTranslating addresses for module %s...' % module)
 		if module.endswith('.dll'):
 			cmd = [ADDR2LINE, '-j', '.text', '-e', tempfile.name]
