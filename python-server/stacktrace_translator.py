@@ -395,9 +395,11 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile, offse
 			log.info("found %s"%(os.path.join(dirname, debugarchive)))
 			fileAlreadyExists = True
 		else:
-			log.info("not found %s, extracting %s "%(os.path.join(dirname, debugfile),debugarchive))
+			log.info("not found %s, extracting %s "%(os.path.join(debugfile),debugarchive))
 			# we should extract the archive. The only problem here being the paths to multiple SkirmishAI.dbg files!
-			if os.path.exists(os.path.join(dirname, debugfile)):
+			if os.path.exists(os.path.join(debugfile)):
+				
+				#log.info("not found %s, extracting %s "%(os.path.join(dirname, debugfile),debugarchive))
 				sevenzip = Popen([SEVENZIP, 'e', '-y', debugfile, debugarchive], stdout = PIPE, stderr = PIPE)
 				stdout, stderr = sevenzip.communicate()
 				if stderr:
