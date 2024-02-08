@@ -376,6 +376,7 @@ def update_base(module, addresses, tempfile):
 	load_base = 0 if module.endswith('.dll') else EXEBASE
 	return [hex(int(x, 16) - load_base + image_base) for x in addresses]
 
+
 def translate_module_addresses(module, debugarchive, addresses, debugfile, offset):
 	'''\
 	Translate addresses in a module to (module, address, filename, lineno) tuples
@@ -383,6 +384,18 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile, offse
 		>>> translate_module_addresses( 'spring.dbg', TESTFILE, ['0x0'])
 		[('spring.dbg', '0x0', '??', 0)]
 	'''
+	
+	# lets quickly check if it already exists!
+	log.info('Checking if target archive is already extracted: module = %s, debugarchive = %s, debugfile = %s' % (module, debugarchive, debugfile))
+	dirname, fname = os.path.split(debugarchive)
+	if os.path.exists(os.path.join(dirname, debugfile)):
+		log.info("found %s"%(os.path.join(dirname, debugfile)))
+	else:
+		log.info("not found %s"%(os.path.join(dirname, debugfile)))
+		# we should extract the archive. The only problem here being the paths to multiple SkirmishAI.dbg files!
+		
+	
+	
 	with NamedTemporaryFile() as tempfile:
 		log.info('\tExtracting debug symbols for module %s from archive %s...' % (module, os.path.basename(debugfile)))
 		# e = extract without path, -so = write output to stdout, -y = yes to all questions
@@ -477,6 +490,8 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile, offse
 			return module, addr, file, 1
 
 	return [fixup(addr, *line.split(':')) for addr, line in zip(addresses, stdout.decode('utf-8').splitlines())]
+
+
 
 
 def translate_(module_frames, frame_count, modules, modulearchive, module_offsets):
