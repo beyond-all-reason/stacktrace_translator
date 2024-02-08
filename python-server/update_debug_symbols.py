@@ -52,6 +52,10 @@ def download_unpack_symbols(archiveurl):
 	runcmd ("rm "+symboltgz)
 	runcmd ("rm -r ./install")
 
+	# Clean up all old debug symbols whenever a new one is downloaded!
+	runcmd("rm -r ./default/*.dbg")
+
+
 def get_for_engineversion(engineversion): #expects 105.1.1-2127-g9568247
 	#https://github.com/beyond-all-reason/spring/releases/download/spring_bar_%7BBAR105%7D105.1.1-2156-g5cfd088/spring_bar_.BAR105.105.1.1-2156-g5cfd088_windows-64-minimal-symbols.tgz
 	url = f"https://github.com/beyond-all-reason/spring/releases/download/spring_bar_%7BBAR105%7D{engineversion}/spring_bar_.BAR105.{engineversion}_windows-64-minimal-symbols.tgz"
