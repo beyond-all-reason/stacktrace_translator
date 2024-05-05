@@ -428,10 +428,7 @@ def translate_module_addresses(module, debugarchive, addresses, debugfile, offse
 			log.info('\t\t[OK]')
 			log.info(str(stdout))
 		log.info('\tTranslating addresses for module %s...' % module)
-		if module.endswith('.dll'):
-			cmd = [ADDR2LINE, '-j', '.text', '-e', tempfile.name]
-		else:
-			cmd = [ADDR2LINE, '-e', tempfile.name]
+		cmd = [ADDR2LINE, '-e', tempfile.name]
 
 		log.debug("Original addresses" +  "\n".join(addresses))
 
