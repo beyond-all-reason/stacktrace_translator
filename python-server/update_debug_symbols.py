@@ -32,7 +32,7 @@ def download_unpack_symbols(archiveurl):
 	# https://github.com/beyond-all-reason/spring/releases/download/spring_bar_%7BBAR%7D104.0.1-1977-g12700e0/spring_bar_.BAR.104.0.1-1977-g12700e0_windows-64-minimal-symbols.tgz
 
 	print(archiveurl,symboltgz, engine_version)
-	runcmd("wget " + " " + archiveurl)
+	runcmd("wget -q " + " " + archiveurl)
 
 	print(archiveurl,symboltgz, engine_version)
 	runcmd("mkdir default")
