@@ -18,7 +18,7 @@ Web-based frontend for translating stack traces of SpringRTS engine crashes.
    ```sh
    docker-compose build
    ```
-   Or completely rebuild it via:
+   Or completely rebuild it via (also needs a complete rebuild if git repo has changes!):
    ```sh
    docker-compose build --no-cache
    ```
