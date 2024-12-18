@@ -35,6 +35,7 @@ def runcmd(command):
 		# Optionally, check the return code
 		if result.returncode != 0:
 			logger.error(f"Command '{command}' failed with return code {result.returncode}")
+		return result.returncode
 	except Exception as e:
 		logger.exception(f"An error occurred while running command: {command}")
 
