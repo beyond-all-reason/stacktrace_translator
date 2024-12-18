@@ -607,7 +607,7 @@ def translate_stacktrace(infolog, dbgsymdir = None):
 	translated_stacktrace = ""
 	try:
 		config, branch, rev = detect_version_details(infolog)
-		logger.info(f"Version details config={config} branch={branch} rev={rev}")
+		log.info(f"Version details config={config} branch={branch} rev={rev}")
 		module_frames, frame_count = collect_stackframes(infolog)
 		module_offsets = get_module_offsets(infolog)
 		debugarchive, modules = collect_modules(config, branch, '', '', dbgsymdir)
