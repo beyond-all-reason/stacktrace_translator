@@ -15,27 +15,27 @@ def runcmd_old(cmd):
 	return os.system(cmd)
 
 def runcmd(command):
-    logger.debug(f"Running cmd: {cmd}")
-    """Run a shell command and log its output."""
-    try:
-        # Use subprocess.run to execute the command and capture output
-        result = subprocess.run(
-            command,
-            shell=True,
-            text=True,               # Ensure output is returned as a string
-            capture_output=True      # Capture both stdout and stderr
-        )
-        
-        # Log the stdout and stderr
-        if result.stdout:
-            logger.info(f"Command output:\n{result.stdout}")
-        if result.stderr:
-            logger.warning(f"Command error output:\n{result.stderr}")
-        
-        # Optionally, check the return code
-        if result.returncode != 0:
-	    logger.error(f"Command '{command}' failed with return code {result.returncode}")
-    except Exception as e:
+	logger.debug(f"Running cmd: {cmd}")
+	"""Run a shell command and log its output."""
+	try:
+		# Use subprocess.run to execute the command and capture output
+		result = subprocess.run(
+			command,
+			shell=True,
+			text=True,               # Ensure output is returned as a string
+			capture_output=True      # Capture both stdout and stderr
+		)
+		
+		# Log the stdout and stderr
+		if result.stdout:
+			logger.info(f"Command output:\n{result.stdout}")
+		if result.stderr:
+			logger.warning(f"Command error output:\n{result.stderr}")
+		
+		# Optionally, check the return code
+		if result.returncode != 0:
+		logger.error(f"Command '{command}' failed with return code {result.returncode}")
+	except Exception as e:
 	logger.exception(f"An error occurred while running command: {command}")
 
 
