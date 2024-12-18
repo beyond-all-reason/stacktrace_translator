@@ -318,8 +318,8 @@ def collect_modules(config, branch, rev, platform, dbgsymdir = None):
 	log.info('Checking debug data availability...')
 
 	if (dbgsymdir == None):
-		log.info(f'No dbgsymdir specified, using {WWWROOT}/{config}/{branch}/{rev}/{platform}')
-		dbgsymdir = os.path.join(WWWROOT, config, branch, rev, platform)
+		log.info(f'No dbgsymdir specified, using {WWWROOT}/{config}/{branch}/{platform}')
+		dbgsymdir = os.path.join(WWWROOT, config, branch, platform)
 
 	log.debug(f'Using dir {dbgsymdir}')
 
@@ -327,7 +327,7 @@ def collect_modules(config, branch, rev, platform, dbgsymdir = None):
 		log.info(f"Debug symbol directory {dbgsymdir} does not exist.")
 		try:
 			log.info(f"Attempting to download debug symbols for {branch}")
-			get_for_engineversion(branch) #expects 105.1.1-2127-g9568247
+			get_for_engineversion(branch,rev) #expects 105.1.1-2127-g9568247
 		except:
 
 			fatal('No debugging symbols available, \"%s\" not a directory' % dbgsymdir)
@@ -610,7 +610,7 @@ def translate_stacktrace(infolog, dbgsymdir = None):
 		log.info(f"Version details config={config} branch={branch} rev={rev}")
 		module_frames, frame_count = collect_stackframes(infolog)
 		module_offsets = get_module_offsets(infolog)
-		debugarchive, modules = collect_modules(config, branch, '', '', dbgsymdir)
+		debugarchive, modules = collect_modules(config, branch, rev, '', dbgsymdir)
 		detect_exebase(infolog)
 
 		if (debugarchive == None):
