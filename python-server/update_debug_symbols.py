@@ -1,5 +1,6 @@
 import os, sys
 import tarfile
+import subprocess
 import logging
 
 logger = logging.getLogger(__name__)
@@ -8,9 +9,34 @@ logger = logging.getLogger(__name__)
 
 os.nice(10)
 
-def runcmd(cmd):
+#Should return the retval of the process
+def runcmd_old(cmd):
 	logger.debug(f"running cmd: {cmd}")
-	os.system(cmd)
+	return os.system(cmd)
+
+def runcmd(command):
+    logger.debug(f"Running cmd: {cmd}")
+    """Run a shell command and log its output."""
+    try:
+        # Use subprocess.run to execute the command and capture output
+        result = subprocess.run(
+            command,
+            shell=True,
+            text=True,               # Ensure output is returned as a string
+            capture_output=True      # Capture both stdout and stderr
+        )
+        
+        # Log the stdout and stderr
+        if result.stdout:
+            logger.info(f"Command output:\n{result.stdout}")
+        if result.stderr:
+            logger.warning(f"Command error output:\n{result.stderr}")
+        
+        # Optionally, check the return code
+        if result.returncode != 0:
+	    logger.error(f"Command '{command}' failed with return code {result.returncode}")
+    except Exception as e:
+	logger.exception(f"An error occurred while running command: {command}")
 
 
 def extract(tar_url, extract_path='.'):
@@ -35,7 +61,9 @@ def download_unpack_symbols(archiveurl):
 	# https://github.com/beyond-all-reason/spring/releases/download/spring_bar_%7BBAR%7D104.0.1-1977-g12700e0/spring_bar_.BAR.104.0.1-1977-g12700e0_windows-64-minimal-symbols.tgz
 
 	logger.info(f'Archive URL = {archiveurl}, symboltgz = {symboltgz}, engine_version= {engine_version}')
-	runcmd("wget -q " + " " + archiveurl)
+	if runcmd("wget -q " + " " + archiveurl) != 0:
+		logger.warning(f'Failed to download archive from {archiveurl} , exiting')
+		return 
 
 	runcmd("mkdir default")
 	runcmd("mkdir " + targetdir)
