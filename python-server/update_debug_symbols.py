@@ -1,28 +1,31 @@
 import os, sys
 import tarfile
+import logging
+
+logger = logging.getLogger(__name__)
 
 #TODO: this unpacks debug symbols in-memory, which eats like 4gb, very bad!
 
 os.nice(10)
 
 def runcmd(cmd):
-	print ("running cmd:", cmd)
+	logger.debug(f"running cmd: {cmd}")
 	os.system(cmd)
 
 
 def extract(tar_url, extract_path='.'):
-	print(tar_url)
+	logger.info(f'tar_url = {tar_url}')
 	tar = tarfile.open(tar_url, 'r')
 	for item in tar:
-		print ("item name", item.name)
+		logger.debug(f'item name {item.name}')
 		if item.name == "./install/spring.dbg" or item.name.startswith( "./install/AI"):
 			tar.extract(item, extract_path)
-			print ("Extracted", item.name,  extract_path)
+			logger.debug(f'Extracted { item.name} to {extract_path}')
 		if item.name.find(".tgz") != -1 or item.name.find(".tar") != -1:
 			extract(item.name, "./" + item.name[:item.name.rfind('/')])
  
 def download_unpack_symbols(archiveurl):
-	print ("Pass the parameter to the output of the github actions windows debug build as a command line arg to this script")
+	logger.debug(f"Pass the parameter to the output of the github actions windows debug build as a command line arg to this script")
 	symboltgz = archiveurl.rpartition("/")[2]
 	if '105.' in symboltgz:
 		engine_version = '105.' + symboltgz.rpartition("_windows")[0].rpartition("105.")[2]
@@ -31,10 +34,9 @@ def download_unpack_symbols(archiveurl):
 	targetdir = "default/" + engine_version
 	# https://github.com/beyond-all-reason/spring/releases/download/spring_bar_%7BBAR%7D104.0.1-1977-g12700e0/spring_bar_.BAR.104.0.1-1977-g12700e0_windows-64-minimal-symbols.tgz
 
-	print(archiveurl,symboltgz, engine_version)
+	logger.info(f'Archive URL = {archiveurl}, symboltgz = {symboltgz}, engine_version= {engine_version}')
 	runcmd("wget -q " + " " + archiveurl)
 
-	print(archiveurl,symboltgz, engine_version)
 	runcmd("mkdir default")
 	runcmd("mkdir " + targetdir)
 
