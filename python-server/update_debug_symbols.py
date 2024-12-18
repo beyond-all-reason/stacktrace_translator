@@ -87,9 +87,10 @@ def download_unpack_symbols(archiveurl):
 	runcmd("rm -r ./default/*.dbg")
 
 
-def get_for_engineversion(engineversion): #expects 105.1.1-2127-g9568247
+def get_for_engineversion(engineversion, branch = 'BAR105'): #expects 105.1.1-2127-g9568247
 	#https://github.com/beyond-all-reason/spring/releases/download/spring_bar_%7BBAR105%7D105.1.1-2156-g5cfd088/spring_bar_.BAR105.105.1.1-2156-g5cfd088_windows-64-minimal-symbols.tgz
-	url = f"https://github.com/beyond-all-reason/spring/releases/download/spring_bar_%7BBAR105%7D{engineversion}/spring_bar_.BAR105.{engineversion}_windows-64-minimal-symbols.tgz"
+	
+	url = f"https://github.com/beyond-all-reason/spring/releases/download/spring_bar_%7B{branch}%7D{engineversion}/spring_bar_.{branch}.{engineversion}_windows-64-minimal-symbols.tgz"
 	download_unpack_symbols(url)
 
 if __name__ == "__main__":
