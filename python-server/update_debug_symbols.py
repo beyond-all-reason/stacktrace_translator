@@ -34,9 +34,9 @@ def runcmd(command):
 		
 		# Optionally, check the return code
 		if result.returncode != 0:
-		logger.error(f"Command '{command}' failed with return code {result.returncode}")
+			logger.error(f"Command '{command}' failed with return code {result.returncode}")
 	except Exception as e:
-	logger.exception(f"An error occurred while running command: {command}")
+		logger.exception(f"An error occurred while running command: {command}")
 
 
 def extract(tar_url, extract_path='.'):
