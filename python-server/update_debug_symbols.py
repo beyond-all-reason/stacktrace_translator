@@ -15,7 +15,7 @@ def runcmd_old(cmd):
 	return os.system(cmd)
 
 def runcmd(command):
-	logger.debug(f"Running cmd: {cmd}")
+	logger.debug(f"Running cmd: {command}")
 	"""Run a shell command and log its output."""
 	try:
 		# Use subprocess.run to execute the command and capture output
