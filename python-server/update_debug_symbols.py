@@ -94,7 +94,7 @@ def get_for_engineversion(engineversion, branch = 'BAR105'): #expects 105.1.1-21
 	# well the above doesnt work for new release names: e.g. ./default/2025.01.3/
 	      # https://github.com/beyond-all-reason/spring/releases/download/2025.01.3/spring_bar_.rel2501.2025.01.3_windows-64-minimal-symbols.tgz
 	
-	url = f"https://github.com/beyond-all-reason/spring/releases/download/{branch }/spring_bar_.rel2501.{branch }_windows-64-minimal-symbols.tgz"
+	url = f"https://github.com/beyond-all-reason/spring/releases/download/{engineversion}/spring_bar_.rel2501.{engineversion}_windows-64-minimal-symbols.tgz"
 	
 	logger.info(f"Getting debug symbols for engine version {engineversion} and branch {branch} from url {url}")
 	download_unpack_symbols(url)
