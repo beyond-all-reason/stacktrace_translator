@@ -57,7 +57,9 @@ def download_unpack_symbols(archiveurl):
 	if '105.' in symboltgz:
 		engine_version = '105.' + symboltgz.rpartition("_windows")[0].rpartition("105.")[2]
 	else:
-		engine_version = '104.' + symboltgz.rpartition("_windows")[0].partition("104.")[2]
+		# needs new engine version semantics to match the folder name in the 7z debug symbol file:
+		engine_version = symboltgz.rpartition("_windows")[0].rpartition("_.rel2501.")[2]
+		
 	targetdir = "default/" + engine_version
 	# https://github.com/beyond-all-reason/spring/releases/download/spring_bar_%7BBAR%7D104.0.1-1977-g12700e0/spring_bar_.BAR.104.0.1-1977-g12700e0_windows-64-minimal-symbols.tgz
 
