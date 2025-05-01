@@ -305,6 +305,7 @@ def get_modules(dbgfile):
 		match = re.match("^.* ([a-zA-Z\/0-9\.]+dbg)$", line)
 		if match:
 			files.append(match.group(1))
+	log.info('Found %d files in %s: %s' % (len(files), dbgfile, ', '.join(files)))
 	return files
 
 
