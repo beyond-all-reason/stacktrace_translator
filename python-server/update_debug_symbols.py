@@ -66,7 +66,7 @@ def extract_zstd(zstd_url, extract_path='.'):
 					if item.name.find(".tgz") != -1 or item.name.find(".tar") != -1:
 						extract(item.name, "./" + item.name[:item.name.rfind('/')])
  
-def download_unpack_symbols(archiveurl):
+def download_unpack_symbols(archiveurl, engine_version = None): 
 	logger.debug(f"Pass the parameter to the output of the github actions windows debug build as a command line arg to this script")
 	symboltgz = archiveurl.rpartition("/")[2]
 	if '105.' in symboltgz:
@@ -80,9 +80,7 @@ def download_unpack_symbols(archiveurl):
 		# but the actual target is 
 		# https://github.com/beyond-all-reason/RecoilEngine/releases/download/2025.04.01/recoil_2025.04.01_amd64-windows-dbgsym.tar.zst
 		logger.info(f"Using latest engine version {archiveurl}")
-		engine_version = symboltgz.rpartition("_windows")[0].rpartition("_.rel2501.")[2]
-		archiveurl = f'https://github.com/beyond-all-reason/RecoilEngine/releases/download/{engine_version}/recoil_{engine_version}_amd64-windows-dbgsym.tar.zst'
-		symboltgz = f'recoil_{engine_version}_amd64-windows-dbgsym.tar.zst'
+		
 	targetdir = "default/" + engine_version
 	# https://github.com/beyond-all-reason/spring/releases/download/spring_bar_%7BBAR%7D104.0.1-1977-g12700e0/spring_bar_.BAR.104.0.1-1977-g12700e0_windows-64-minimal-symbols.tgz
 
@@ -128,7 +126,7 @@ def get_for_engineversion(engineversion, branch = 'BAR105'): #expects 105.1.1-21
 		url = f'https://github.com/beyond-all-reason/RecoilEngine/releases/download/{engineversion}/recoil_{engineversion}_amd64-windows-dbgsym.tar.zst' 
  
 	logger.info(f"Getting debug symbols for engine version {engineversion} and branch {branch} from url {url}")
-	download_unpack_symbols(url)
+	download_unpack_symbols(url, engine_version = engineversion)
 
 if __name__ == "__main__":
 	if len(sys.argv) >= 1:  
