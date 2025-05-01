@@ -121,9 +121,12 @@ def get_for_engineversion(engineversion, branch = 'BAR105'): #expects 105.1.1-21
 	#url = f"https://github.com/beyond-all-reason/spring/releases/download/spring_bar_%7B{branch}%7D{engineversion}/spring_bar_.{branch}.{engineversion}_windows-64-minimal-symbols.tgz"
 	# well the above doesnt work for new release names: e.g. ./default/2025.01.3/
 	      # https://github.com/beyond-all-reason/spring/releases/download/2025.01.3/spring_bar_.rel2501.2025.01.3_windows-64-minimal-symbols.tgz
-	
 	url = f"https://github.com/beyond-all-reason/spring/releases/download/{engineversion}/spring_bar_.rel2501.{engineversion}_windows-64-minimal-symbols.tgz"
 	
+	# if engineversion 2025.04.01 or higher:
+	if engineversion >= "2025.04.01":
+		url = f'https://github.com/beyond-all-reason/RecoilEngine/releases/download/{engineversion}/recoil_{engineversion}_amd64-windows-dbgsym.tar.zst' 
+ 
 	logger.info(f"Getting debug symbols for engine version {engineversion} and branch {branch} from url {url}")
 	download_unpack_symbols(url)
 
