@@ -2,6 +2,7 @@ import os, sys
 import tarfile
 import subprocess
 import logging
+import zstandard as zstd
 
 logger = logging.getLogger(__name__)
 
@@ -50,16 +51,38 @@ def extract(tar_url, extract_path='.'):
 			logger.debug(f'Extracted { item.name} to {extract_path}')
 		if item.name.find(".tgz") != -1 or item.name.find(".tar") != -1:
 			extract(item.name, "./" + item.name[:item.name.rfind('/')])
+   
+def extract_zstd(zstd_url, extract_path='.'):
+	logger.info(f'zstd_url = {zstd_url}')
+	with open(zstd_url, 'rb') as compressed_file:
+		dctx = zstd.ZstdDecompressor()
+		with dctx.stream_reader(compressed_file) as reader:
+			with tarfile.open(fileobj=reader, mode='r|') as tar:
+				for item in tar:
+					logger.debug(f'item name {item.name}')
+					if item.name == "./install/spring.dbg" or item.name.startswith("./install/AI"):
+						tar.extract(item, extract_path)
+						logger.debug(f'Extracted {item.name} to {extract_path}')
+					if item.name.find(".tgz") != -1 or item.name.find(".tar") != -1:
+						extract(item.name, "./" + item.name[:item.name.rfind('/')])
  
 def download_unpack_symbols(archiveurl):
 	logger.debug(f"Pass the parameter to the output of the github actions windows debug build as a command line arg to this script")
 	symboltgz = archiveurl.rpartition("/")[2]
 	if '105.' in symboltgz:
 		engine_version = '105.' + symboltgz.rpartition("_windows")[0].rpartition("105.")[2]
-	else:
+	elif 'rel2501' in symboltgz:
 		# needs new engine version semantics to match the folder name in the 7z debug symbol file:
 		engine_version = symboltgz.rpartition("_windows")[0].rpartition("_.rel2501.")[2]
-		
+	else:
+		# latest engine version, where the incoming archiveurl is like:
+		# https://github.com/beyond-all-reason/spring/releases/download/2025.04.01/spring_bar_.rel2501.2025.04.01_windows-64-minimal-symbols.tgz, symboltgz = spring_bar_.rel2501.2025.04.01_windows-64-minimal-symbols.tgz, engine_version= 2025.04.01
+		# but the actual target is 
+		# https://github.com/beyond-all-reason/RecoilEngine/releases/download/2025.04.01/recoil_2025.04.01_amd64-windows-dbgsym.tar.zst
+		logger.info(f"Using latest engine version {archiveurl}")
+		engine_version = symboltgz.rpartition("_windows")[0].rpartition("_.rel2501.")[2]
+		archiveurl = f'https://github.com/beyond-all-reason/RecoilEngine/releases/download/{engine_version}/recoil_{engine_version}_amd64-windows-dbgsym.tar.zst'
+		symboltgz = f'recoil_{engine_version}_amd64-windows-dbgsym.tar.zst'
 	targetdir = "default/" + engine_version
 	# https://github.com/beyond-all-reason/spring/releases/download/spring_bar_%7BBAR%7D104.0.1-1977-g12700e0/spring_bar_.BAR.104.0.1-1977-g12700e0_windows-64-minimal-symbols.tgz
 
@@ -72,8 +95,11 @@ def download_unpack_symbols(archiveurl):
 	runcmd("mkdir " + targetdir)
 
 	for filename in os.listdir(os.getcwd()):
-		if engine_version in filename and filename.endswith(".tgz"):
-			extract(filename)
+		if engine_version in filename:
+			if filename.endswith(".tgz"):
+				extract(filename)
+			if filename.endswith(".zst"):
+				extract_zstd(filename)
 	runcmd("mv -f install/* .")
 
 	runcmd ("rm spring_dbg.7z")

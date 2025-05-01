@@ -6,6 +6,8 @@ FROM debian:12
 # Update the package list and install Python
 RUN apt-get update && apt-get install -y python3 python3-pip python3-pefile binutils wget binutils p7zip-full git
 
+# Install the required Python packages, zstd:
+RUN pip3 install --no-cache-dir pefile zstandard
 # Set the working directory inside the container
 WORKDIR /usr/src/app
 
