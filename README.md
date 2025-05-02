@@ -46,6 +46,12 @@ Use a URL or manually copy and paste into the textbox the `infolog.txt` of a cra
 
 If you are locally changing the files for the translator while building the image, uncomment these two lines in <a href="python-server/Dockerfile">python-server</a>:
 ```
-COPY stacktrace_translator.py .
-COPY update_debug_symbols.py .
+# Local changes:
+COPY stacktrace_translator.py ./python-server/stacktrace_translator.py
+COPY update_debug_symbols.py ./python-server/update_debug_symbols.py
+```
+
+Build and debug with 
+```sh
+docker-compose build && docker-compose up
 ```

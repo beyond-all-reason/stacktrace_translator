@@ -3,7 +3,10 @@ import tarfile
 import subprocess
 import logging
 import zstandard as zstd
-
+logging.basicConfig(
+	format='%(levelname)s: %(funcName)s : %(lineno)d - %(message)s',
+	level=logging.DEBUG
+)
 logger = logging.getLogger(__name__)
 
 #TODO: this unpacks debug symbols in-memory, which eats like 4gb, very bad!
@@ -59,14 +62,14 @@ def extract_zstd(zstd_url, extract_path='.'):
 		with dctx.stream_reader(compressed_file) as reader:
 			with tarfile.open(fileobj=reader, mode='r|') as tar:
 				for item in tar:
-					logger.debug(f'item name {item.name}')
-					if item.name == "./install/spring.dbg" or item.name.startswith("./install/AI"):
+					logger.debug(f'extract zstd from {zstd_url} item name {item.name}')
+					if item.name == "./spring.dbg" or item.name.startswith("./AI"):
 						tar.extract(item, extract_path)
 						logger.debug(f'Extracted {item.name} to {extract_path}')
 					if item.name.find(".tgz") != -1 or item.name.find(".tar") != -1:
 						extract(item.name, "./" + item.name[:item.name.rfind('/')])
  
-def download_unpack_symbols(archiveurl, engine_version = None): 
+def download_unpack_symbols(archiveurl):
 	logger.debug(f"Pass the parameter to the output of the github actions windows debug build as a command line arg to this script")
 	symboltgz = archiveurl.rpartition("/")[2]
 	if '105.' in symboltgz:
@@ -80,7 +83,10 @@ def download_unpack_symbols(archiveurl, engine_version = None):
 		# but the actual target is 
 		# https://github.com/beyond-all-reason/RecoilEngine/releases/download/2025.04.01/recoil_2025.04.01_amd64-windows-dbgsym.tar.zst
 		logger.info(f"Using latest engine version {archiveurl}")
-		
+		engine_version = archiveurl.rpartition("_amd64")[0].rpartition("recoil_")[2]
+		archiveurl = f'https://github.com/beyond-all-reason/RecoilEngine/releases/download/{engine_version}/recoil_{engine_version}_amd64-windows-dbgsym.tar.zst'
+		symboltgz = f'recoil_{engine_version}_amd64-windows-dbgsym.tar.zst'
+		logger.info(f"Using latest engine version {engine_version} and archiveurl {archiveurl} and symboltgz {symboltgz}")
 	targetdir = "default/" + engine_version
 	# https://github.com/beyond-all-reason/spring/releases/download/spring_bar_%7BBAR%7D104.0.1-1977-g12700e0/spring_bar_.BAR.104.0.1-1977-g12700e0_windows-64-minimal-symbols.tgz
 
@@ -99,7 +105,7 @@ def download_unpack_symbols(archiveurl, engine_version = None):
 			if filename.endswith(".zst"):
 				extract_zstd(filename)
 	runcmd("mv -f install/* .")
-
+	runcmd("ls -la")
 	runcmd ("rm spring_dbg.7z")
 	runcmd ("7za a -ms=off -m0=lzma2 -mx=1 -y spring_dbg.7z spring.dbg ./AI") # dont compress it much for speed, 
 	runcmd ("mv -f spring_dbg.7z ./"+targetdir+'/')
@@ -126,7 +132,7 @@ def get_for_engineversion(engineversion, branch = 'BAR105'): #expects 105.1.1-21
 		url = f'https://github.com/beyond-all-reason/RecoilEngine/releases/download/{engineversion}/recoil_{engineversion}_amd64-windows-dbgsym.tar.zst' 
  
 	logger.info(f"Getting debug symbols for engine version {engineversion} and branch {branch} from url {url}")
-	download_unpack_symbols(url, engine_version = engineversion)
+	download_unpack_symbols(url)
 
 if __name__ == "__main__":
 	if len(sys.argv) >= 1:  

@@ -14,10 +14,9 @@ WORKDIR /usr/src/app
 # I have decided for these to be runtime stuff for freshness
 RUN git clone https://github.com/beyond-all-reason/stacktrace_translator.git .
 
-# Local changes:
-# COPY python-server/stacktrace_translator.py /python-server
-# COPY python-server/update_debug_symbols.py /python-server
-
+# Local changes: (uncomment these lines to apply local changes)
+COPY stacktrace_translator.py ./python-server/stacktrace_translator.py
+COPY update_debug_symbols.py ./python-server/update_debug_symbols.py
 
 # Ensure logs directory exists
 RUN mkdir -p /usr/src/app/logs

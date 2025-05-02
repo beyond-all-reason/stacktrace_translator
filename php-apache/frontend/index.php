@@ -192,7 +192,8 @@ function parse_result($res,$ver,$commit,$branch){
 				if (!empty($commit)){
 					$textwithlinks.='<td><a target="_blank" href="https://github.com/beyond-all-reason/spring/blob/BAR105/'.$filename.'#L'.$line.'">'.$line.'</a></td>';
 				} else {
-					$textwithlinks.='<td><a target="_blank" href="http://github.com/beyond-all-reason/spring/tree/BAR105/'.$filename.'#L'.$line.'">'.$line.'</a></td>';
+					// $textwithlinks.='<td><a target="_blank" href="http://github.com/beyond-all-reason/spring/tree/BAR105/'.$filename.'#L'.$line.'">'.$line.'</a></td>';
+					$textwithlinks.='<td><a target="_blank" href="https://github.com/beyond-all-reason/RecoilEngine/tree/master/'.$filename.'#L'.$line.'">'.$line.'</a></td>';
 				}
 			}else {
 				$textwithlinks.="<td>$line</td>";

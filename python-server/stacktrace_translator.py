@@ -305,7 +305,6 @@ def get_modules(dbgfile):
 		match = re.match("^.* ([a-zA-Z\/0-9\.]+dbg)$", line)
 		if match:
 			files.append(match.group(1))
-	log.info('Found %d files in %s: %s' % (len(files), dbgfile, ', '.join(files)))
 	return files
 
 
@@ -342,6 +341,13 @@ def collect_modules(config, branch, rev, platform, dbgsymdir = None):
 		match = re.match(RE_DEBUG_FILENAME, filename)
 		if match:
 			dbgfile = os.path.join(dbgsymdir, filename)
+			# check its size to be more than 32kb:
+			if os.path.getsize(dbgfile) < 327680:
+				log.warning(f"Debug file {dbgfile} is too small, ignoring it")
+				dbgfile = None
+			else:
+				log.info(f"Found debug file {dbgfile}")
+				break
 
 	if not dbgfile:
 		return None, None
