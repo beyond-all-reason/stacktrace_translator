@@ -5,6 +5,8 @@ services:
     container_name: python-server
     ports:
       - "8000:8000"
+    volumes:
+      - ./log:/usr/src/app/logs/
     networks:
       - stacktrace_net
 
@@ -15,6 +17,8 @@ services:
       - python-server
     ports:
       - "80:80"
+    volumes:
+      - ./log:/var/log
     networks:
       - stacktrace_net
 
