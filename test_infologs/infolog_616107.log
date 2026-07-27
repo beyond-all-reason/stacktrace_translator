@@ -1,0 +1,885 @@
+﻿[t=00:00:00.161064] DetectCores: cpu mask ffff
+[t=00:00:00.161067] Found logical processors (mask 0x0000ffff) using L3 cache (sized 32768KB) 
+[t=00:00:00.161068] Run: thread affinity ffff
+[t=00:00:00.161069] [DataDirLocater::FindWriteableDataDir] using writeable data-directory "C:/Program Files/Beyond-All-Reason/data/"
+[t=00:00:00.161552] Using writeable configuration source: "C:/Program Files/Beyond-All-Reason/data/springsettings.cfg"
+[t=00:00:00.161553] Using additional read-only configuration source: "C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/springsettings.cfg"
+[t=00:00:00.161570] LogOutput initialized. Logging to C:/Program Files/Beyond-All-Reason/data/infolog.txt
+[t=00:00:00.161602] ============== <Log Sections ([A]vailable, [E]nabled)> ==============
+[t=00:00:00.161607]   
+    [A] ArchiveScanner
+    [A] AutohostInterface
+    [A] BumpWater
+    [A] CSMFGroundTextures
+    [A] CregSerializer
+    [A] DynWater
+    [A] Font
+    [A] GameServer
+    [A] GroundMoveType
+    [A] KeyBindings
+    [A] LuaSocket
+    [A] Model
+    [A] Net
+    [A] Path
+    [A] Piece
+    [A] RoamMeshDrawer
+    [A] Shader
+    [A] SkyBox
+    [A] Sound
+    [A] Texture
+    [A] VFS
+    [E] Sound (Notice)
+    [E] VFS (Info)
+[t=00:00:00.161707]   
+[t=00:00:00.161710]   Enable or disable log sections using the LogSections configuration key
+[t=00:00:00.161713]   or the SPRING_LOG_SECTIONS environment variable (both comma separated).
+[t=00:00:00.161717]   Use "none" to disable the default log sections.
+[t=00:00:00.161720] ============== </Log Sections> ==============
+
+[t=00:00:00.161727] ============== <User Config> ==============
+[t=00:00:00.161819]   AllowDeferredMapRendering = 1
+[t=00:00:00.161822]   AllowDeferredModelRendering = 1
+[t=00:00:00.161826]   AllowDrawMapDeferredEvents = 1
+[t=00:00:00.161829]   BumpWaterAnisotropy = 2
+[t=00:00:00.161832]   BumpWaterBlurReflection = 1
+[t=00:00:00.161835]   BumpWaterDepthBits = 32
+[t=00:00:00.161838]   BumpWaterReflection = 2
+[t=00:00:00.161841]   BumpWaterTexSizeReflection = 1024
+[t=00:00:00.161845]   CamMode = 3
+[t=00:00:00.161856]   CamSpringMinZoomDistance = 300
+[t=00:00:00.161860]   CrossAlpha = 0
+[t=00:00:00.161863]   CubeTexGenerateMipMaps = 1
+[t=00:00:00.161866]   CubeTexSizeReflection = 1024
+[t=00:00:00.161870]   DualScreenMiniMapOnLeft = 1
+[t=00:00:00.161873]   EdgeMoveDynamic = 0
+[t=00:00:00.161909]   EdgeMoveWidth = 0.003
+[t=00:00:00.161912]   FPSFOV = 90
+[t=00:00:00.161915]   FeatureDrawDistance = 600000
+[t=00:00:00.161919]   FeatureFadeDistance = 600000
+[t=00:00:00.161922]   FontFile = FreeSansBold.otf
+[t=00:00:00.161928]   FontOutlineWeight = 2
+[t=00:00:00.161930]   FontOutlineWidth = 6
+[t=00:00:00.161933]   FontSize = 41
+[t=00:00:00.162106]   Fullscreen = 0
+[t=00:00:00.162110]   GrassDetail = 0
+[t=00:00:00.162113]   GroundDecals = 2
+[t=00:00:00.162116]   GroundDetail = 200
+[t=00:00:00.162118]   HangTimeout = 30
+[t=00:00:00.162121]   HardwareCursor = 1
+[t=00:00:00.162124]   InitialNetworkTimeout = 0
+[t=00:00:00.162127]   InputTextGeo = 0.35 0.72 0.03 0.04
+[t=00:00:00.162130]   KeyChainTimeout = 333
+[t=00:00:00.162138]   LinkIncomingMaxPacketRate = 2048
+[t=00:00:00.162141]   LinkIncomingPeakBandwidth = 1048576
+[t=00:00:00.162144]   LinkIncomingSustainedBandwidth = 1048576
+[t=00:00:00.162147]   LinkOutgoingBandwidth = 196608
+[t=00:00:00.162150]   LuaGarbageCollectionMemLoadMult = 1
+[t=00:00:00.162153]   LuaGarbageCollectionRunTimeMult = 1
+[t=00:00:00.162156]   MSAALevel = 4
+[t=00:00:00.162159]   MaxDynamicModelLights = 0
+[t=00:00:00.162162]   MaxNanoParticles = 0
+[t=00:00:00.162165]   MaxParticles = 15000
+[t=00:00:00.162170]   MaxSounds = 256
+[t=00:00:00.162172]   MaxTextureAtlasSizeX = 8192
+[t=00:00:00.162175]   MaxTextureAtlasSizeY = 8192
+[t=00:00:00.162178]   MaximumTransmissionUnit = 0
+[t=00:00:00.162181]   MiddleClickScrollSpeed = -0.001
+[t=00:00:00.162184]   MiniMapDrawPings = 0
+[t=00:00:00.162187]   MiniMapMarker = 0
+[t=00:00:00.162190]   MouseDragBoxCommandThreshold = 37
+[t=00:00:00.162193]   MouseDragCircleCommandThreshold = 37
+[t=00:00:00.162196]   MouseDragFrontCommandThreshold = 37
+[t=00:00:00.162219]   MouseDragScrollThreshold = 0
+[t=00:00:00.162222]   MouseDragSelectionThreshold = 21
+[t=00:00:00.162225]   NetworkLossFactor = 2
+[t=00:00:00.162228]   OverheadMaxHeightFactor = 1.39999998
+[t=00:00:00.162231]   OverheadMinZoomDistance = 300
+[t=00:00:00.162234]   OverheadScrollSpeed = 50
+[t=00:00:00.162238]   RapidTagResolutionOrder = repos-cdn.beyondallreason.dev;repos.beyondallreason.dev
+[t=00:00:00.162242]   ReconnectTimeout = 0
+[t=00:00:00.162245]   RotateLogFiles = 1
+[t=00:00:00.162248]   ScrollWheelSpeed = -20
+[t=00:00:00.162255]   ServerSleepTime = 1
+[t=00:00:00.162257]   ShadowMapSize = 2820
+[t=00:00:00.162260]   Shadows = 1
+[t=00:00:00.162263]   ShowClock = 0
+[t=00:00:00.162265]   ShowFPS = 1
+[t=00:00:00.162268]   ShowPlayerInfo = 0
+[t=00:00:00.162270]   ShowSpeed = 1
+[t=00:00:00.162273]   SmallFontFile = FreeSansBold.otf
+[t=00:00:00.162276]   SmallFontOutlineWeight = 2
+[t=00:00:00.162279]   SmallFontOutlineWidth = 6
+[t=00:00:00.162282]   SmallFontSize = 41
+[t=00:00:00.162284]   SmoothTimeOffset = 2
+[t=00:00:00.162289]   SplashScreenDir = ./MenuLoadscreens
+[t=00:00:00.162293]   UnitIconDist = 160
+[t=00:00:00.162296]   UnitIconFadeVanish = 3000
+[t=00:00:00.162298]   UnitIconScaleUI = 1.05
+[t=00:00:00.162301]   UnitIconsAsUI = 1
+[t=00:00:00.162304]   UnitIconsHideWithUI = 1
+[t=00:00:00.162307]   UseDistToGroundForIcons = 1.10000002
+[t=00:00:00.162310]   UseHighResTimer = 1
+[t=00:00:00.162313]   UseLuaMemPools = 0
+[t=00:00:00.162315]   UseNetMessageSmoothingBuffer = 0
+[t=00:00:00.162319]   VFSCacheArchiveFiles = 0
+[t=00:00:00.162324]   Water = 4
+[t=00:00:00.162327]   WindowBorderless = 1
+[t=00:00:00.162330]   WindowPosY = 0
+[t=00:00:00.162333]   XResolutionWindowed = 2560
+[t=00:00:00.162336]   YResolutionWindowed = 1440
+[t=00:00:00.162339]   snd_airAbsorption = 0.35
+[t=00:00:00.162342]   snd_volbattle = 30
+[t=00:00:00.162345]   snd_volmaster = 38
+[t=00:00:00.162348]   snd_volmusic = 0
+[t=00:00:00.162364] ============== </User Config> ==============
+
+[t=00:00:00.162370] ============== <User System> ==============
+[t=00:00:00.162376]   Spring Engine Version: 2026.06.12
+[t=00:00:00.162380]       Build Environment: gcc libstdc++ version 20231024
+[t=00:00:00.162384]        Compiler Version: gcc-13-posix
+[t=00:00:00.162419]        Operating System: Windows 10 TBA Insider Update (build 26200)
+[t=00:00:00.162462]         Hardware Config: AMD Ryzen 7 7700 8-Core Processor              ; 31860MB RAM, 41076MB pagefile
+[t=00:00:00.162467]        Binary Word Size: 64-bit (native)
+[t=00:00:00.162470]           Process Clock: std::chrono::high_resolution_clock
+[t=00:00:00.162477]      Physical CPU Cores: 8
+[t=00:00:00.162480]       Logical CPU Cores: 16
+[t=00:00:00.162483] ============== </User System> ==============
+
+[t=00:00:00.162489] Run: thread affinity ffff
+[t=00:00:00.162731] [good_fpu_init][STREFLOP_SSE]
+[t=00:00:00.162735] 	SSE 1.0 : 1,  SSE 2.0 : 1
+[t=00:00:00.162737] 	SSE 3.0 : 1, SSSE 3.0 : 1
+[t=00:00:00.162740] 	SSE 4.1 : 1,  SSE 4.2 : 1
+[t=00:00:00.162742] 	SSE 4.0A: 1,  SSE 5.0A: 0
+[t=00:00:00.163825] [WatchDog::Install] installed (hang-timeout: 30s)
+[t=00:00:00.163836] [WatchDog::RegisterThread] registering controls for thread [main]
+[t=00:00:00.168625] [GL::CheckAvailableVideoModes] desktop={2560x1440x24bpp@240Hz} current={2560x1440x24bpp@240Hz}
+[t=00:00:00.180480] 	Display (Generic PnP Monitor)=1 modes=150 bounds={x=0, y=0, w=2560, h=1440}
+[t=00:00:00.180500] 		[ 1] 2560x1440x24bpp@240Hz
+[t=00:00:00.180504] 		[ 8] 1920x1200x24bpp@240Hz
+[t=00:00:00.180509] 		[15] 1920x1080x24bpp@240Hz
+[t=00:00:00.180529] 		[25] 1760x990x24bpp@240Hz
+[t=00:00:00.180532] 		[35] 1680x1050x24bpp@240Hz
+[t=00:00:00.180536] 		[42] 1600x1200x24bpp@240Hz
+[t=00:00:00.180539] 		[49] 1600x900x24bpp@240Hz
+[t=00:00:00.180543] 		[56] 1440x900x24bpp@240Hz
+[t=00:00:00.180546] 		[63] 1366x768x24bpp@240Hz
+[t=00:00:00.180550] 		[70] 1280x1024x24bpp@240Hz
+[t=00:00:00.180553] 		[77] 1280x800x24bpp@240Hz
+[t=00:00:00.180557] 		[84] 1280x720x24bpp@240Hz
+[t=00:00:00.180560] 		[93] 1128x634x24bpp@240Hz
+[t=00:00:00.180563] 		[102] 1024x768x24bpp@240Hz
+[t=00:00:00.180608] 		[110] 832x624x24bpp@240Hz
+[t=00:00:00.180611] 		[117] 800x600x24bpp@240Hz
+[t=00:00:00.180615] 		[125] 720x480x24bpp@240Hz
+[t=00:00:00.180619] 		[133] 720x400x24bpp@240Hz
+[t=00:00:00.180622] 		[141] 640x480x24bpp@240Hz
+[t=00:00:00.339642] [GR::CreateSDLWindow] using 4x anti-aliasing and 24-bit depth-buffer (PF="SDL_PIXELFORMAT_RGB888") for main window
+[t=00:00:00.339732] [GR::SetWindowAttributes][1] cfgFullScreen=0 numDisplays=1 winPos=<0,0> newRes=<2560,1440>
+[t=00:00:00.339751] [GR::SetWindowAttributes][2] cfgFullScreen=0 numDisplays=1 winPos=<0,0> newRes=<2560,1440>
+[t=00:00:00.575914] [GR::LogVersionInfo]
+[t=00:00:00.575931] 	SDL version : 2.0.18 (linked) / 2.0.18 (compiled)
+[t=00:00:00.575935] 	GL version  : 4.6.0 Compatibility Profile Context 26.6.4.260624
+[t=00:00:00.575939] 	GL vendor   : ATI Technologies Inc.
+[t=00:00:00.575942] 	GL renderer : AMD Radeon RX 9070 XT
+[t=00:00:00.575945] 	GLSL version: 4.60
+[t=00:00:00.575948] 	GLAD version: 0.1.36
+[t=00:00:00.575951] 	GPU memory  : 30438MB (total) / 30438MB (available)
+[t=00:00:00.576011] 	SDL swap-int: 0
+[t=00:00:00.576020] 	SDL driver  : windows
+[t=00:00:00.576025] 	
+[t=00:00:00.576029] 	Initialized OpenGL Context: 4.6 (Compat)
+[t=00:00:00.576035] 	GLSL shader support       : 1
+[t=00:00:00.576040] 	GL4 support               : 1
+[t=00:00:00.576045] 	FBO extension support     : 1
+[t=00:00:00.576050] 	NVX GPU mem-info support  : 0
+[t=00:00:00.576055] 	ATI GPU mem-info support  : 1
+[t=00:00:00.576061] 	Texture clamping to edge  : 1
+[t=00:00:00.576074] 	S3TC/DXT1 texture support : 1/0
+[t=00:00:00.576079] 	texture query-LOD support : 1 (1)
+[t=00:00:00.576084] 	MSAA frame-buffer support : 1 (1)
+[t=00:00:00.576088] 	Z-buffer depth            : 24 (-)
+[t=00:00:00.576092] 	primitive-restart support : 1 (1)
+[t=00:00:00.576097] 	clip-space control support: 1 (1)
+[t=00:00:00.576102] 	seamless cube-map support : 1 (1)
+[t=00:00:00.576106] 	frag-depth layout support : 1 (1)
+[t=00:00:00.576111] 	persistent maps support   : 1 (1)
+[t=00:00:00.576120] 	explicit attribs location : 1 (1)
+[t=00:00:00.576124] 	multi draw indirect       : 1 (-)
+[t=00:00:00.576130] 	array textures            : 1 (-)
+[t=00:00:00.576135] 	buffer copy support       : 1 (-)
+[t=00:00:00.576139] 	indirect draw             : 1 (-)
+[t=00:00:00.576145] 	base instance             : 1 (-)
+[t=00:00:00.576150] 	
+[t=00:00:00.576153] 	max. FBO samples              : 8
+[t=00:00:00.576158] 	max. texture slots            : 8
+[t=00:00:00.576163] 	max. FS/program texture slots : 32/160
+[t=00:00:00.576172] 	max. texture size             : 32768
+[t=00:00:00.576181] 	max. texture anisotropy level : 16.000000
+[t=00:00:00.576186] 	max. vec4 varyings/attributes : 16/32
+[t=00:00:00.576191] 	max. draw-buffers             : 8
+[t=00:00:00.576196] 	max. rec. indices/vertices    : 536870911/536870911
+[t=00:00:00.576201] 	max. uniform buffer-bindings  : 84
+[t=00:00:00.576206] 	max. uniform block-size       : 4096KB
+[t=00:00:00.576211] 	max. storage buffer-bindings  : 96
+[t=00:00:00.576216] 	max. storage block-size       : 2047MB
+[t=00:00:00.576225] 	
+[t=00:00:00.576229] 	enable AMD-hacks : 1
+[t=00:00:00.576233] 	compress MIP-maps: 0
+[t=00:00:00.576261] 	Number of compressed texture formats: 33
+[t=00:00:00.576274] 	Compressed texture formats: 0x83a0, 0x83a1, 0x83a2, 0x83a3, 0x83a4, 0x83a5, GL_COMPRESSED_RGB_S3TC_DXT1_EXT, GL_COMPRESSED_RGBA_S3TC_DXT1_EXT, GL_COMPRESSED_RGBA_S3TC_DXT3_EXT, GL_COMPRESSED_RGBA_S3TC_DXT5_EXT, 0x8c4c, 0x8c4d, 0x8c4e, 0x8c4f, 0x8d64, GL_COMPRESSED_RED_RGTC1, GL_COMPRESSED_SIGNED_RED_RGTC1, GL_COMPRESSED_RG_RGTC2, GL_COMPRESSED_SIGNED_RG_RGTC2, GL_COMPRESSED_RGBA_BPTC_UNORM, GL_COMPRESSED_SRGB_ALPHA_BPTC_UNORM, GL_COMPRESSED_RGB_BPTC_SIGNED_FLOAT, GL_COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT, GL_COMPRESSED_R11_EAC, GL_COMPRESSED_SIGNED_R11_EAC, GL_COMPRESSED_RG11_EAC, GL_COMPRESSED_SIGNED_RG11_EAC, GL_COMPRESSED_RGB8_ETC2, GL_COMPRESSED_SRGB8_ETC2, GL_COMPRESSED_RGB8_PUNCHTHROUGH_ALPHA1_ETC2, GL_COMPRESSED_SRGB8_PUNCHTHROUGH_ALPHA1_ETC2, GL_COMPRESSED_RGBA8_ETC2_EAC, GL_COMPRESSED_SRGB8_ALPHA8_ETC2_EAC. 
+[t=00:00:00.576485] [GR::ToggleGLDebugOutput] OpenGL debug-message callback disabled
+[t=00:00:00.578066] [GR::UpdateGLConfigs]
+[t=00:00:00.578123] [VSync::SetInterval] interval=-1 (adaptive)
+[t=00:00:00.578132] [GR::UpdateGLGeometry][1] winSize=<1,1>
+[t=00:00:00.578145] [GR::UpdateScreenMatrices] vpx=0.000000, vpy=0.000000, vsx=2560.000000, vsy=1440.000000, ssx=2560.000000, ssy=1440.000000, screenPosX=0, screenPosY=0
+[t=00:00:00.578156] [GR::UpdateGLGeometry][2] winSize=<2560,1440>
+[t=00:00:00.578172] [GR::InitGLState]
+[t=00:00:00.579065] [GR::LogDisplayMode] display-mode set to 2560x1440x24bpp@240Hz (windowed::borderless)
+[t=00:00:00.643138] [TexMemPool::Resize] poolSize=536870912u allocSize=0u texCount=0u
+[t=00:00:00.643420] [Font] [InitFontconfig] Using Fontconfig light init
+[t=00:00:00.653656] [Font] [InitFontconfig] Using Fontconfig cache dir "C:/Program Files/Beyond-All-Reason/data/fontcache"
+[t=00:00:00.653674] [~ScopedOnceTimer][InitFontconfig::FontConfigInit (version 2.13.1)] 10ms
+[t=00:00:00.668504] [WatchDog::RegisterThread] registering controls for thread [vfsi]
+[t=00:00:00.668939] [DataDirLocater::FindWriteableDataDir] using writeable data-directory "C:/Program Files/Beyond-All-Reason/data/"
+[t=00:00:00.668949] [DataDirLocater::Check] Isolation Mode!
+[t=00:00:00.669003] [DataDirLocater::FilterUsableDataDirs] using read-write data directory: C:/Program Files/Beyond-All-Reason/data/
+[t=00:00:00.669057] [DataDirLocater::FilterUsableDataDirs] using read-only data directory: C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/
+[t=00:00:00.832130] Scanning: C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/base
+[t=00:00:00.833257] Scanning: C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/maps
+[t=00:00:00.833540] Scanning: C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/games
+[t=00:00:00.833916] Scanning: C:/Program Files/Beyond-All-Reason/data/maps
+[t=00:00:00.844172] Scanning: C:/Program Files/Beyond-All-Reason/data/packages
+[t=00:00:00.864929] [~CPoolArchive] archiveFile="C:/Program Files/Beyond-All-Reason/data/packages/dbcd8754c3b2a78dfe90f9e0fcd7def5.sdp" numZipFiles=2728 sumInflSize=407975kb sumReadTime=7ms
+[t=00:00:00.864957] 	file="modinfo.lua" indx=2707 inflSize=0kb readTime=7ms
+[t=00:00:00.864966] 	file=".luacheckrc" indx=4 inflSize=1kb readTime=0ms
+[t=00:00:00.864972] 	file="anims/cursornormal_0.png" indx=8 inflSize=2kb readTime=0ms
+[t=00:00:00.864979] 	file="anims/icexuick_100/cursornormal_0.png" indx=9 inflSize=2kb readTime=0ms
+[t=00:00:00.865026] 	file="anims/cursornormal.txt" indx=7 inflSize=0kb readTime=0ms
+[t=00:00:00.865033] 	file=".gitignore" indx=3 inflSize=0kb readTime=0ms
+[t=00:00:00.865039] 	file=".github/workflows/publish_config.yml" indx=1 inflSize=0kb readTime=0ms
+[t=00:00:00.865046] 	file=".travis.yml" indx=5 inflSize=0kb readTime=0ms
+[t=00:00:00.865052] 	file=".github/workflows/launcher.yml" indx=0 inflSize=2kb readTime=0ms
+[t=00:00:00.865059] 	file=".github/workflows/quick_deploy.yml" indx=2 inflSize=1kb readTime=0ms
+[t=00:00:00.865135] [~CBufferedArchive][name=C:/Program Files/Beyond-All-Reason/data/packages/dbcd8754c3b2a78dfe90f9e0fcd7def5.sdp] 0 bytes cached in 0 files, 0 bytes cached in 0 files
+[t=00:00:00.920378] [~CPoolArchive] archiveFile="C:/Program Files/Beyond-All-Reason/data/packages/7be6d33dc68e1489cd9328b805961ad0.sdp" numZipFiles=18376 sumInflSize=3312758kb sumReadTime=8ms
+[t=00:00:00.920425] 	file="modinfo.lua" indx=9028 inflSize=0kb readTime=8ms
+[t=00:00:00.920433] 	file=".github/advanced-issue-labeler.yml" indx=4 inflSize=0kb readTime=0ms
+[t=00:00:00.920456] 	file=".github/issue_template/config.yml" indx=8 inflSize=0kb readTime=0ms
+[t=00:00:00.920463] 	file=".github/issue_template/feature_request.yml" indx=9 inflSize=1kb readTime=0ms
+[t=00:00:00.920471] 	file=".github/issue_template/bug_report.yml" indx=7 inflSize=1kb readTime=0ms
+[t=00:00:00.920478] 	file=".gitattributes" indx=3 inflSize=0kb readTime=0ms
+[t=00:00:00.920485] 	file=".editorconfig" indx=1 inflSize=0kb readTime=0ms
+[t=00:00:00.920542] 	file=".github/code_of_conduct.md" indx=5 inflSize=5kb readTime=0ms
+[t=00:00:00.920549] 	file=".busted" indx=0 inflSize=1kb readTime=0ms
+[t=00:00:00.920555] 	file=".emmyrc.json" indx=2 inflSize=3kb readTime=0ms
+[t=00:00:00.920941] [~CBufferedArchive][name=C:/Program Files/Beyond-All-Reason/data/packages/7be6d33dc68e1489cd9328b805961ad0.sdp] 0 bytes cached in 0 files, 0 bytes cached in 0 files
+[t=00:00:02.282806] [~ScopedOnceTimer][CArchiveScanner::ScanAllDirs] 1450ms
+[t=00:00:02.282837] [VFS] [SpringVFS::ReserveArchives<this=000001e8beea0080>]
+[t=00:00:02.282886] [VFS] [SpringVFS::AddArchive<this=000001e8beea0080>(arName="Spring content v1", overwrite=false)] section=2 cached=0
+[t=00:00:02.284923] [VFS] [VFSHandler::SetGlobalInstanceRaw] handler=000001e8beea0080 (SpringVFS) global=0000000000000000 (null)
+[t=00:00:02.284934] [WatchDog::DeregisterThread] deregistering controls for thread [vfsi]
+[t=00:00:02.286054] [Threading] Optimal thread count is 8
+[t=00:00:02.286066] [ThreadPool::SetThreadCount][1] wanted=8 current=1 maximum=16 (init=1)
+[t=00:00:02.286362] [ThreadPool::SetThreadCount][2] workers=7
+[t=00:00:02.286368] CPU Affinity Mask Details detected:
+[t=00:00:02.286372] -- Performance Core Mask:      0x0000ffff
+[t=00:00:02.286376] -- Efficiency  Core Mask:      0x00000000
+[t=00:00:02.286380] -- Hyper Thread/SMT Low Mask:  0x00005555
+[t=00:00:02.286384] -- Hyper Thread/SMT High Mask: 0x0000aaaa
+[t=00:00:02.286387] -- Optimal Cache Mask:         0x0000ffff
+[t=00:00:02.286401] [Threading] Preferred performance cache mask is: 0x0000ffff (L3 sized: 32768KB)
+[t=00:00:02.286411] [ThreadPool] Main thread affinity requested as 0x00004000
+[t=00:00:02.286564] [Threading] Worker 3 thread CPU affinity mask set: 0x10
+[t=00:00:02.286653] [Threading] Worker 4 thread CPU affinity mask set: 0x40
+[t=00:00:02.286810] [Threading] Worker 5 thread CPU affinity mask set: 0x100
+[t=00:00:02.286928] [Threading] Worker 6 thread CPU affinity mask set: 0x400
+[t=00:00:02.287044] [Threading] Worker 7 thread CPU affinity mask set: 0x1000
+[t=00:00:02.288071] [Threading] Worker 2 thread CPU affinity mask set: 0x4
+[t=00:00:02.288078] [Threading] Worker 1 thread CPU affinity mask set: 0x1
+[t=00:00:02.288112] [Threading] Main thread CPU affinity mask set: 0x4000
+[t=00:00:02.288386][f=-000001] [~ScopedOnceTimer][ISound::Init::New] 0ms
+[t=00:00:02.288438][f=-000001] [Sound] [ISound::Initialize] spawning sound-thread (0.0ms)
+[t=00:00:02.288520][f=-000001] [Sound] [Sound::UpdateThread][1] cfgMaxSounds=256
+[t=00:00:02.288550][f=-000001] [WatchDog::RegisterThread] registering controls for thread [audio]
+[t=00:00:02.288586][f=-000001] [Sound] [Sound::InitThread][1]
+[t=00:00:02.288618][f=-000001] [Sound] [Sound::OpenLoopbackDevice] UseSDLAudio is set, rendering openal-soft audio to SDL buffer and let SDL audio handle the hardware
+[t=00:00:02.293099][f=-000001] [Sound] [Sound::OpenSdlDevice] SDL audio device(s): 
+[t=00:00:02.293125][f=-000001] [Sound] [Sound::OpenSdlDevice]  * "0" "Speakers (3- USB PnP Audio Device)"
+[t=00:00:02.293130][f=-000001] [Sound] [Sound::OpenSdlDevice]  * "1" "1 - Legion 27Q-10 (AMD High Definition Audio Device)"
+[t=00:00:02.293154][f=-000001] [Sound] [Sound::OpenSdlDevice] opening default device
+[t=00:00:02.306610][f=-000001] [Sound] [Sound::OpenLoopbackDevice] opening loopback device
+[t=00:00:02.308650][f=-000001] [Sound] [Sound::OpenLoopbackDevice] device=000001e8c0d30b10(default) context=000001e8c0d3ecd0  numChannels=2 frameSize=8
+[t=00:00:02.308680][f=-000001] [Sound] [Sound::InitThread][4][OpenAL API Info]
+[t=00:00:02.308703][f=-000001] [Sound]   Vendor:         OpenAL Community
+[t=00:00:02.308707][f=-000001] [Sound]   Version:        1.1 ALSOFT 1.21.0
+[t=00:00:02.308711][f=-000001] [Sound]   Renderer:       OpenAL Soft
+[t=00:00:02.308717][f=-000001] [Sound]   AL Extensions:  AL_EXT_ALAW AL_EXT_BFORMAT AL_EXT_DOUBLE AL_EXT_EXPONENT_DISTANCE AL_EXT_FLOAT32 AL_EXT_IMA4 AL_EXT_LINEAR_DISTANCE AL_EXT_MCFORMATS AL_EXT_MULAW AL_EXT_MULAW_BFORMAT AL_EXT_MULAW_MCFORMATS AL_EXT_OFFSET AL_EXT_source_distance_model AL_EXT_SOURCE_RADIUS AL_EXT_STEREO_ANGLES AL_LOKI_quadriphonic AL_SOFT_bformat_ex AL_SOFTX_bformat_hoa AL_SOFT_block_alignment AL_SOFTX_callback_buffer AL_SOFTX_convolution_reverb AL_SOFT_deferred_updates AL_SOFT_direct_channels AL_SOFT_direct_channels_remix AL_SOFT_effect_target AL_SOFT_events AL_SOFTX_filter_gain_ex AL_SOFT_gain_clamp_ex AL_SOFT_loop_points AL_SOFTX_map_buffer AL_SOFT_MSADPCM AL_SOFT_source_latency AL_SOFT_source_length AL_SOFT_source_resampler AL_SOFT_source_spatialize
+[t=00:00:02.308750][f=-000001] [Sound]   ALC Extensions: ALC_ENUMERATE_ALL_EXT ALC_ENUMERATION_EXT ALC_EXT_CAPTURE ALC_EXT_DEDICATED ALC_EXT_disconnect ALC_EXT_EFX ALC_EXT_thread_local_context ALC_SOFT_device_clock ALC_SOFT_HRTF ALC_SOFT_loopback ALC_SOFT_loopback_bformat ALC_SOFT_output_limiter ALC_SOFT_pause_device
+[t=00:00:02.308762][f=-000001] [Sound]   Devices:
+[t=00:00:02.311980][f=-000001] [Sound]     [OpenAL Soft on Speakers (3- USB PnP Audio Device)]
+[t=00:00:02.311993][f=-000001] [Sound]     [OpenAL Soft on 1 - Legion 27Q-10 (AMD High Definition Audio Device)]
+[t=00:00:02.312016][f=-000001] [Sound] [Sound::GetMaxMonoSources] #attribs=29
+[t=00:00:02.312021][f=-000001] [Sound] [Sound::GetMaxMonoSources] {cfg,alc}MaxSounds={256,255}
+[t=00:00:02.312666][f=-000001] [Sound]   EFX Enabled: yes
+[t=00:00:02.312699][f=-000001] [Sound] [Sound::UpdateThread][2]
+[t=00:00:02.400123][f=-000001] [~ScopedOnceTimer][ISound::Init::Dev] 111ms
+[t=00:00:02.401635][f=-000001] [LuaMenuController::Reset] using menu archive "rapid://byar-chobby:test"
+[t=00:00:02.412825][f=-000001] [VFS] [LuaMenuVFS::AddArchive<this=000001e8beea0080>(arName="BYAR Chobby test-4612-71dc2ac", overwrite=false)] section=3 cached=0
+[t=00:00:02.414757][f=-000001] [VFS] [LuaMenuVFS::AddArchive<this=000001e8beea0080>(arName="Spring content v1", overwrite=false)] section=2 cached=0
+[t=00:00:02.414821][f=-000001] [VFS] [LuaMenuVFS::AddArchive<this=000001e8beea0080>(arName="Spring Bitmaps", overwrite=false)] section=2 cached=0
+[t=00:00:02.448753][f=-000001] LuaMenu Entry Point: "LuaMenu/main.lua"
+[t=00:00:02.448968][f=-000001] Error: Error loading socket.lua
+[t=00:00:02.493801][f=-000001] [LuaMenu] Searching for new Widgets
+[t=00:00:02.493818][f=-000001] [LuaMenu] Scanning: LuaMenu/Addons/
+[t=00:00:02.493844][f=-000001] [LuaMenu] Scanning: LuaMenu/Widgets/
+[t=00:00:02.494141][f=-000001] [LuaMenu] Scanning: LuaMenu/SystemAddons/
+[t=00:00:02.494151][f=-000001] [LuaMenu] Scanning: LuaMenu/SystemWidgets/
+[t=00:00:02.494160][f=-000001] [LuaMenu] Scanning: LuaMenu/chili/
+[t=00:00:02.494170][f=-000001] [LuaMenu] Scanning: libs/chilifx/LuaMenu/widgets
+[t=00:00:02.494183][f=-000001] [LuaMenu] Scanning: libs/chotify/LuaMenu/widgets
+[t=00:00:02.494208][f=-000001] [LuaMenu] Scanning: libs/i18n/LuaMenu/widgets
+[t=00:00:02.494226][f=-000001] [LuaMenu] Scanning: libs/liblobby/LuaMenu/widgets
+[t=00:00:02.500080][f=-000001] [LuaMenu] Warning: Missing GetInfo() in: base64.lua
+[t=00:00:02.505095][f=-000001] [LuaMenu] Warning: Missing GetInfo() in: engineversion.lua
+[t=00:00:02.509709][f=-000001] Spring.GetWindowGeometry, 2560, 1440, 0, 0, 0, 0, 0, 0
+[t=00:00:02.509725][f=-000001] Spring.GetViewGeometry, 2560, 1440, 0, 0
+[t=00:00:02.509742][f=-000001] gl.GetViewSizes, 2560, 1440
+[t=00:00:02.509754][f=-000001] [LuaMenu] Warning: Missing GetInfo() in: function_override.lua
+[t=00:00:02.516321][f=-000001] [LuaMenu] Warning: Missing GetInfo() in: tablefunctions.lua
+[t=00:00:02.522214][f=-000001] [LuaMenu] Warning: Missing GetInfo() in: timefunctions.lua
+[t=00:00:02.894983][f=-000001] [LuaMenu] Loading widgets   <>=vfs  **=raw  ()=unknown
+[t=00:00:02.896100][f=-000001] [LuaMenu] Loading API widget:  Delay API              <api_delay.lua>
+[t=00:00:02.903311][f=-000001] [LuaMenu] Loading API widget:  spring-launcher        <api_spring_launcher_loader.lua>
+[t=00:00:02.909466][f=-000001] [spring-launcher] Connecting to 127.0.0.1:51691
+[t=00:00:02.911712][f=-000001] [LuaMenu] Loading API widget:  Package Cleanup        <api_package_cleanup.lua>
+[t=00:00:02.913586][f=-000001] [LuaMenu] Loading API widget:  Away Tracker           <gui_away_tracker.lua>
+[t=00:00:02.915427][f=-000001] [LuaMenu] Loading API widget:  Chili Framework        <api_chili.lua>
+[t=00:00:03.331596][f=-000001] [LuaMenu] Loading API widget:  LibLobby API           <api_lobby.lua>
+[t=00:00:03.336994][f=-000001] [liblobby] liblobby configuration: 
+[t=00:00:03.337005][f=-000001] [liblobby] serverName, BAR
+[t=00:00:03.337010][f=-000001] [liblobby] port, 8200
+[t=00:00:03.337014][f=-000001] [liblobby] protocol, spring
+[t=00:00:03.337018][f=-000001] [liblobby] address, server4.beyondallreason.info
+[t=00:00:03.364942][f=-000001] Checking for Tracy profiler build:, <table>, nil, false
+[t=00:00:03.384038][f=-000001] [LuaMenu] Loading API widget:  i18n                   <api_i18n.lua>
+[t=00:00:03.417126][f=-000001] [LuaMenu] Loading API widget:  BAR LibLobby overrides  <api_lobby_bar.lua>
+[t=00:00:03.418957][f=-000001] [LuaMenu] Loading API widget:  ChiliFX                <api_chilifx.lua>
+[t=00:00:03.431477][f=-000001] [ChiliFX] Enabled: true
+[t=00:00:03.433056][f=-000001] [LuaMenu] Loading API widget:  Chotify                <api_chotify.lua>
+[t=00:00:03.444163][f=-000001] [Chotify] Enabled: true
+[t=00:00:03.446801][f=-000001] [LuaMenu] Loading API widget:  Download Handler       <api_download_handler.lua>
+[t=00:00:03.482803][f=-000001] [LuaMenu] Loading API widget:  Ingame Interface       <api_ingame_interface.lua>
+[t=00:00:03.484735][f=-000001] Limit Idle FPS is enabled:, true, max set to , 4, for platform, AMD, true
+[t=00:00:03.497642][f=-000001] Limit Idle FPS is enabled:, true, max set to , 4, for platform, AMD, true
+[t=00:00:03.498599][f=-000001] [LuaMenu] Loading widget:      Limit idle FPS         <gfx_limit_idle_fps.lua>
+[t=00:00:03.506437][f=-000001] [LuaMenu] Loading widget:      Test                   <dbg_test.lua>
+[t=00:00:03.508842][f=-000001] [LuaMenu] Loading widget:      Command Buffering      <api_command_buffering.lua>
+[t=00:00:03.509437][f=-000001] [LuaMenu] Loading widget:      Battle List Window     <gui_battle_list_window.lua>
+[t=00:00:03.514787][f=-000001] [LuaMenu] Loading widget:      Community Window       <gui_community_window.lua>
+[t=00:00:03.518564][f=-000001] [LuaMenu] Loading widget:      Download Window        <gui_download_window.lua>
+[t=00:00:03.520995][f=-000001] [LuaMenu] Loading widget:      Friend Window          <gui_friend_window.lua>
+[t=00:00:03.522820][f=-000001] [LuaMenu] Loading widget:      Notification Handler   <api_notification_handler.lua>
+[t=00:00:03.524351][f=-000001] [LuaMenu] Loading widget:      Party Window           <gui_party_window.lua>
+[t=00:00:03.527179][f=-000001] [LuaMenu] Loading widget:      Replays window         <gui_replay_handler.lua>
+[t=00:00:03.534391][f=-000001] [LuaMenu] Loading widget:      Settings Window        <gui_settings_window.lua>
+[t=00:00:03.542102][f=-000001] [LuaMenu] Loading widget:      Users Handler          <api_user_handler.lua>
+[t=00:00:03.543676][f=-000001] [LuaMenu] Loading widget:      Plugins Window         <gui_plugins_window.lua>
+[t=00:00:03.544308][f=-000001] [LuaMenu] Loading widget:      Cache Handler API      <api_cache_handler.lua>
+[t=00:00:03.545111][f=-000001] [LuaMenu] Loading widget:      Internet Browser API   <api_internet_browser.lua>
+[t=00:00:03.545730][f=-000001] [LuaMenu] Loading widget:      Map Handler API        <api_map_handler.lua>
+[t=00:00:03.549326][f=-000001] [LuaMenu] Loading widget:      Scenario window        <gui_scenario_window.lua>
+[t=00:00:03.693187][f=-000001] Scenario Window SetConfigData
+[t=00:00:03.693902][f=-000001] [LuaMenu] Loading widget:      Spring-Launcher log-upload  <sl_upload_log.lua>
+[t=00:00:03.695356][f=-000001] [LuaMenu] Loading widget:      Spring-Launcher wrapper loopback interface  <sl_loopback.lua>
+[t=00:00:03.696641][f=-000001] [LuaMenu] Loading widget:      Rapid Pool Cache       <api_rapid_pool_cache.lua>
+[t=00:00:03.696878][f=-000001] Initializing Rapid Pool Cache
+[t=00:00:03.697967][f=-000001] [LuaMenu] Loading widget:      OpenSkill Snapshot Downloader  <gui_open_skill_snapshot.lua>
+[t=00:00:03.698299][f=-000001] Scanning: C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/base
+[t=00:00:03.699055][f=-000001] Scanning: C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/maps
+[t=00:00:03.699243][f=-000001] Scanning: C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/games
+[t=00:00:03.699518][f=-000001] Scanning: C:/Program Files/Beyond-All-Reason/data/maps
+[t=00:00:03.702035][f=-000001] Scanning: C:/Program Files/Beyond-All-Reason/data/packages
+[t=00:00:04.737420][f=-000001] [~ScopedOnceTimer][CArchiveScanner::ScanAllDirs] 1039ms
+[t=00:00:04.747757][f=-000001] [LuaMenu] Loading widget:      API Script Handler     <api_script_generator.lua>
+[t=00:00:04.752602][f=-000001] [LuaMenu] Loading widget:      Analytics Handler      <api_analytics.lua>
+[t=00:00:04.753331][f=-000001] [LuaMenu] Loading widget:      Animation control      <api_animation_control.lua>
+[t=00:00:04.754973][f=-000001] [LuaMenu] Loading widget:      Battle Login Rejoin    <gui_battle_login_rejoin.lua>
+[t=00:00:04.756730][f=-000001] [LuaMenu] Loading widget:      Battle Rejoin          <gui_battle_rejoin.lua>
+[t=00:00:04.769930][f=-000001] [LuaMenu] Loading widget:      Battle Room Window     <gui_battle_room_window.lua>
+[t=00:00:04.772547][f=-000001] [LuaMenu] Loading widget:      Battle status panel    <gui_battle_status_panel.lua>
+[t=00:00:04.774474][f=-000001] [LuaMenu] Loading widget:      Color change window    <gui_color_change_window.lua>
+[t=00:00:04.778767][f=-000001] [LuaMenu] Loading widget:      Cursor tooltip         <gui_tooltip.lua>
+[t=00:00:04.789458][f=-000001] [LuaMenu] Loading widget:      Discord Rich Presence Handler  <api_discord_handler.lua>
+[t=00:00:04.790522][f=-000001] [LuaMenu] Loading widget:      Faction change window  <gui_side_change_window.lua>
+[t=00:00:04.792581][f=-000001] [LuaMenu] Loading widget:      Integer Selector Window  <gui_integer_popup_window.lua>
+[t=00:00:04.794634][f=-000001] [LuaMenu] Loading widget:      Keys Panel             <gui_keys_panel.lua>
+[t=00:00:04.797797][f=-000001] [LuaMenu] Loading widget:      Load Game Menu         <gui_loadgame.lua>
+[t=00:00:04.800393][f=-000001] [LuaMenu] Loading widget:      Login Window           <gui_login_window.lua>
+[t=00:00:04.806996][f=-000001] [LuaMenu] Loading widget:      Maplist Panel          <gui_maplist_panel.lua>
+[t=00:00:04.808860][f=-000001] [LuaMenu] Loading widget:      Mission Progress Handler  <api_mission_progress_handler.lua>
+[t=00:00:04.814331][f=-000001] [LuaMenu] Loading widget:      Modoptions Panel       <gui_modoptions_panel.lua>
+[t=00:00:04.818593][f=-000001] [LuaMenu] Loading widget:      Optionpreset Panel     <gui_optionpresets_panel.lua>
+[t=00:00:04.820960][f=-000001] [LuaMenu] Loading widget:      Popup Preloader        <gui_popup_preloader.lua>
+[t=00:00:04.823009][f=-000001] [LuaMenu] Loading widget:      Resize Scaling         <gfx_resize_scaling.lua>
+[t=00:00:04.823839][f=-000001] [LuaMenu] Loading widget:      Resolution limiter     <gfx_resolution_limiter.lua>
+[t=00:00:04.826893][f=-000001] [LuaMenu] Loading widget:      Steam Coop Handler     <gui_steam_coop_handler.lua>
+[t=00:00:04.829510][f=-000001] [LuaMenu] Loading widget:      Steam Handler          <api_steam_handler.lua>
+[t=00:00:04.830511][f=-000001] [LuaMenu] Loading widget:      Super Announcement Notifier 1.01  <gui_super_announce_notifier.lua>
+[t=00:00:04.832182][f=-000001] [LuaMenu] Loading widget:      Team change window     <gui_team_change_window.lua>
+[t=00:00:04.833882][f=-000001] [LuaMenu] Loading widget:      Text Entry Popop Window  <gui_textentry_popup_window.lua>
+[t=00:00:04.835935][f=-000001] [LuaMenu] Loading widget:      User status panel      <gui_user_status_panel.lua>
+[t=00:00:04.838066][f=-000001] [LuaMenu] Loading widget:      Party status panel     <gui_party_status_panel.lua>
+[t=00:00:04.839951][f=-000001] [LuaMenu] Loading widget:      Cursor scaler          <gfx_cursorscaler.lua>
+[t=00:00:04.841717][f=-000001] [LuaMenu] Loading widget:      ChiliProfiler          <dbg_chili_profiler.lua>
+[t=00:00:04.843336][f=-000001] [LuaMenu] Loading widget:      Chili lobby            <gui_chili_lobby.lua>
+[t=00:00:04.970105][f=-000001] [Chobby] Detected game config, byar-dev
+[t=00:00:04.970189][f=-000001] [Chobby] Detected game config, byar
+[t=00:00:04.970197][f=-000001] [Chobby] Detected game config, generic
+[t=00:00:05.036189][f=-000001] Vendor and GL, AMD, 4
+[t=00:00:05.322080][f=-000001] [Chili] Warning: You are using a custom emojitextbox0::DrawControl in widget "Chili lobby".
+			Please note that with Chili 2.1 the (self.x, self.y) translation is moved a level up and does not need to be done in DrawControl anymore.
+			When you adjusted your code set `drawcontrolv2 = true` in the respective control to disable this message.
+[t=00:00:05.335745][f=-000001] [PluginsWindow] Initialized
+[t=00:00:05.353782][f=-000001] [LuaMenu] Loading widget:      Standalone lobby tools  <gui_standalone_lobby.lua>
+[t=00:00:05.354573][f=-000001] [LuaMenu] Loading widget:      Block Input            <gui_block_input.lua>
+[t=00:00:05.368668][f=-000001] [LuaMenu] Loading widget:      Music Player Lite      <snd_music_lite.lua>
+[t=00:00:05.369085][f=-000001] RANDOMSEED, 5207495
+[t=00:00:05.370270][f=-000001] [LuaMenu] Loading widget:      Disable NonBar Widgets  <api_disable_nonbar_widgets.lua>
+[t=00:00:05.371332][f=-000001] Scenario Window GetConfigData
+[t=00:00:05.375272][f=-000001] [LuaMenu] LuaMenu v1.0 (Lua 5.1 with Recoil-specific changes)
+[t=00:00:05.383273][f=-000001] [LuaMenuController::Activate(msg="")] luaMenu=000001e8e9729000
+[t=00:00:05.383296][f=-000001] SetLobbyButtonEnabled, true
+[t=00:00:05.383315][f=-000001] SetLobbyFullscreenMode, 1
+[t=00:00:05.396941][f=-000001] Starting Track, luamenu/configs/gameConfig/byar/lobbyMusic/original/matteo dell'acqua - foobar (menu ver.) (intro).ogg, 0.30000001
+[t=00:00:05.429624][f=-000001] [SpringApp::MainEventHandler][SDL_AUDIODEVICEADDED][1] type=4352, which=0, iscapture=0
+[t=00:00:05.429644][f=-000001] [SpringApp::MainEventHandler][SDL_AUDIODEVICEADDED][1] type=4352, which=1, iscapture=0
+[t=00:00:05.429649][f=-000001] [SpringApp::MainEventHandler][SDL_AUDIODEVICEADDED][1] type=4352, which=0, iscapture=1
+[t=00:00:05.429914][f=-000001] [GR::ConfigNotify][1] key=Fullscreen val=0
+[t=00:00:05.429949][f=-000001] [VSync::SetInterval] interval=1 (standard)
+[t=00:00:05.445438][f=-000001] [Analytics] Using port: , 8200
+[t=00:00:06.243748][f=-000001] Saved lobby versions.gz from, rapid/repos-cdn.beyondallreason.dev/byar-chobby/versions.gz, size = , 145287
+[t=00:00:06.244036][f=-000001] Wrote , rapid/repos-cdn.beyondallreason.dev/byar-chobby/versions.gz_cache.gz, successfully
+[t=00:00:06.503103][f=-000001] Rapid Pool Cache: Your load speed 11MB/s, below 80MB/s advise pre-caching
+[t=00:00:06.503885][f=-000001] Disabled NonBar Widgets:, Party status panel
+[t=00:00:06.622572][f=-000001] [VSync::SetInterval] interval=3 (standard)
+[t=00:00:06.622608][f=-000001] [GR::SetWindowAttributes][1] cfgFullScreen=0 numDisplays=1 winPos=<0,0> newRes=<2560,1440>
+[t=00:00:06.622615][f=-000001] [GR::SetWindowAttributes][2] cfgFullScreen=0 numDisplays=1 winPos=<0,0> newRes=<2560,1440>
+[t=00:00:06.678282][f=-000001] Rapid Pool Cache: loaded 11 files (274 KB, 5.39 MB/s) in 0.05s
+[t=00:00:06.756155][f=-000001] 
+[t=00:00:06.756172][f=-000001] [SpringApp::MainEventHandler][SDL_WINDOWEVENT_SHOWN][1] fullScreen=0
+[t=00:00:06.756179][f=-000001] [~ScopedOnceTimer][Sound::Iconified] 0ms
+[t=00:00:06.756183][f=-000001] [SpringApp::MainEventHandler][SDL_WINDOWEVENT_SHOWN][2]
+
+[t=00:00:06.756189][f=-000001] [SpringApp::MainEventHandler][SDL_WINDOWEVENT_SIZE_CHANGED][1] fullScreen=0
+[t=00:00:06.756214][f=-000001] [GR::UpdateGLConfigs]
+[t=00:00:06.756221][f=-000001] [GR::UpdateGLGeometry][1] winSize=<2560,1440>
+[t=00:00:06.756239][f=-000001] [GR::UpdateScreenMatrices] vpx=0.000000, vpy=0.000000, vsx=2560.000000, vsy=1440.000000, ssx=2560.000000, ssy=1440.000000, screenPosX=0, screenPosY=0
+[t=00:00:06.756246][f=-000001] [GR::UpdateGLGeometry][2] winSize=<2560,1440>
+[t=00:00:06.756250][f=-000001] [GR::InitGLState]
+[t=00:00:06.756260][f=-000001] [GR::LogDisplayMode] display-mode set to 2560x1440x24bpp@240Hz (windowed::borderless)
+[t=00:00:06.756266][f=-000001] [~ScopedOnceTimer][GlobalRendering::UpdateGL] 0ms
+[t=00:00:06.756520][f=-000001] [~ScopedOnceTimer][ActiveController::ResizeEvent] 0ms
+[t=00:00:06.756526][f=-000001] [SpringApp::MainEventHandler][SDL_WINDOWEVENT_SIZE_CHANGED][2]
+
+[t=00:00:06.756531][f=-000001] 
+[t=00:00:06.756534][f=-000001] [SpringApp::MainEventHandler][SDL_WINDOWEVENT_SHOWN][1] fullScreen=0
+[t=00:00:06.756540][f=-000001] [~ScopedOnceTimer][Sound::Iconified] 0ms
+[t=00:00:06.756544][f=-000001] [SpringApp::MainEventHandler][SDL_WINDOWEVENT_SHOWN][2]
+
+[t=00:00:06.870462][f=-000001] [PluginsWindow] Loaded 42 widgets from manifest
+[t=00:00:07.383217][f=-000001] Rapid Pool Cache: loaded 10 files (346 KB, 6.41 MB/s) in 0.05s
+[t=00:00:07.950979][f=-000001] Rapid Pool Cache: loaded 12 files (302 KB, 5.50 MB/s) in 0.05s
+[t=00:00:07.967221][f=-000001] Scanning: C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/base
+[t=00:00:07.967998][f=-000001] Scanning: C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/maps
+[t=00:00:07.968204][f=-000001] Scanning: C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/games
+[t=00:00:07.968478][f=-000001] Scanning: C:/Program Files/Beyond-All-Reason/data/maps
+[t=00:00:07.971566][f=-000001] Scanning: C:/Program Files/Beyond-All-Reason/data/packages
+[t=00:00:08.963511][f=-000001] [~ScopedOnceTimer][CArchiveScanner::ScanAllDirs] 996ms
+[t=00:00:09.038086][f=-000001] [VSync::SetInterval] interval=4 (standard)
+[t=00:00:09.104006][f=-000001] [VSync::SetInterval] interval=3 (standard)
+[t=00:00:09.891973][f=-000001] [Chili] Warning: You are using a custom emojitextbox1::DrawControl in widget "Chili lobby".
+			Please note that with Chili 2.1 the (self.x, self.y) translation is moved a level up and does not need to be done in DrawControl anymore.
+			When you adjusted your code set `drawcontrolv2 = true` in the respective control to disable this message.
+[t=00:00:10.632302][f=-000001] Rapid Pool Cache: loaded 13 files (440 KB, 8.47 MB/s) in 0.05s
+[t=00:00:11.339805][f=-000001] Rapid Pool Cache: loaded 11 files (390 KB, 7.50 MB/s) in 0.05s
+[t=00:00:12.018275][f=-000001] Rapid Pool Cache: loaded 11 files (425 KB, 8.18 MB/s) in 0.05s
+[t=00:00:12.700910][f=-000001] Rapid Pool Cache: loaded 11 files (490 KB, 9.09 MB/s) in 0.05s
+[t=00:00:13.357559][f=-000001] Rapid Pool Cache: loaded 11 files (445 KB, 8.10 MB/s) in 0.05s
+[t=00:00:13.997338][f=-000001] Rapid Pool Cache: loaded 12 files (175 KB, 3.38 MB/s) in 0.05s
+[t=00:00:14.652048][f=-000001] Rapid Pool Cache: loaded 12 files (434 KB, 8.04 MB/s) in 0.05s
+[t=00:00:15.343937][f=-000001] Rapid Pool Cache: loaded 12 files (317 KB, 5.77 MB/s) in 0.05s
+[t=00:00:16.003785][f=-000001] Rapid Pool Cache: loaded 11 files (371 KB, 7.02 MB/s) in 0.05s
+[t=00:00:16.736293][f=-000001] Rapid Pool Cache: loaded 13 files (459 KB, 8.67 MB/s) in 0.05s
+[t=00:00:17.372498][f=-000001] Rapid Pool Cache: loaded 12 files (1062 KB, 19.67 MB/s) in 0.05s
+[t=00:00:17.458358][f=-000001] Looking for empty host in region, AU
+[t=00:00:17.458384][f=-000001] Manager, Host[AU2], 6, 40, 28.9000015, 28.9000015
+[t=00:00:17.458408][f=-000001] Manager, Host[AU1], 17, 150, 117.926666, 146.82666
+[t=00:00:17.458419][f=-000001] Found a manager for this request, Host[AU2], 146.82666, 28.9000015, 120.621452
+[t=00:00:18.091845][f=-000001] Rapid Pool Cache: loaded 11 files (520 KB, 9.46 MB/s) in 0.05s
+[t=00:00:18.387050][f=-000001] [chobby] Showing battle with ID, 7510
+[t=00:00:18.397686][f=-000001] [VFS] [LuaVFS::UnMapArchives<this=000001e8beea0080>(reload=0)] (#mod=0 #map=0 #menu=2728)
+[t=00:00:18.397706][f=-000001] [VFS] [LuaVFS::AddArchive<this=000001e8beea0080>(arName="Beyond All Reason test-30777-6e8d0a9", overwrite=false)] section=0 cached=0
+[t=00:00:18.417131][f=-000001] [VFS] [LuaVFS::RemoveArchive<this=000001e8beea0080>(archiveName="C:/Program Files/Beyond-All-Reason/data/packages/7be6d33dc68e1489cd9328b805961ad0.sdp")][1] section=0
+[t=00:00:18.417239][f=-000001] [VFS] [LuaVFS::RemoveArchive<this=000001e8beea0080>][2] #files[section]=18376/0
+[t=00:00:18.417455][f=-000001] [~CPoolArchive] archiveFile="C:/Program Files/Beyond-All-Reason/data/packages/7be6d33dc68e1489cd9328b805961ad0.sdp" numZipFiles=18376 sumInflSize=3312758kb sumReadTime=6ms
+[t=00:00:18.417487][f=-000001] 	file="modoptions.lua" indx=9029 inflSize=86kb readTime=6ms
+[t=00:00:18.417491][f=-000001] 	file=".github/advanced-issue-labeler.yml" indx=4 inflSize=0kb readTime=0ms
+[t=00:00:18.417495][f=-000001] 	file=".github/issue_template/config.yml" indx=8 inflSize=0kb readTime=0ms
+[t=00:00:18.417500][f=-000001] 	file=".github/issue_template/feature_request.yml" indx=9 inflSize=1kb readTime=0ms
+[t=00:00:18.417508][f=-000001] 	file=".github/issue_template/bug_report.yml" indx=7 inflSize=1kb readTime=0ms
+[t=00:00:18.417512][f=-000001] 	file=".gitattributes" indx=3 inflSize=0kb readTime=0ms
+[t=00:00:18.417517][f=-000001] 	file=".editorconfig" indx=1 inflSize=0kb readTime=0ms
+[t=00:00:18.417520][f=-000001] 	file=".github/code_of_conduct.md" indx=5 inflSize=5kb readTime=0ms
+[t=00:00:18.417525][f=-000001] 	file=".busted" indx=0 inflSize=1kb readTime=0ms
+[t=00:00:18.417530][f=-000001] 	file=".emmyrc.json" indx=2 inflSize=3kb readTime=0ms
+[t=00:00:18.417791][f=-000001] [~CBufferedArchive][name=C:/Program Files/Beyond-All-Reason/data/packages/7be6d33dc68e1489cd9328b805961ad0.sdp] 0 bytes cached in 0 files, 0 bytes cached in 0 files
+[t=00:00:18.418093][f=-000001] [VFS] [LuaVFS::ReMapArchives<this=000001e8beea0080>(reload=0)] (#mod=0 #map=0 #menu=0)
+[t=00:00:18.420159][f=-000001] [Chili] Warning: You are using a custom emojitextbox2::DrawControl in widget "Chili lobby".
+			Please note that with Chili 2.1 the (self.x, self.y) translation is moved a level up and does not need to be done in DrawControl anymore.
+			When you adjusted your code set `drawcontrolv2 = true` in the respective control to disable this message.
+[t=00:00:18.897329][f=-000001] Rapid Pool Cache: loaded 12 files (750 KB, 13.89 MB/s) in 0.05s
+[t=00:00:19.524787][f=-000001] Rapid Pool Cache: loaded 12 files (233 KB, 4.32 MB/s) in 0.05s
+[t=00:00:20.129181][f=-000001] Rapid Pool Cache: loaded 11 files (699 KB, 13.71 MB/s) in 0.05s
+[t=00:00:20.804858][f=-000001] Rapid Pool Cache: loaded 12 files (803 KB, 14.61 MB/s) in 0.05s
+[t=00:00:21.402657][f=-000001] Rapid Pool Cache: loaded 11 files (534 KB, 10.47 MB/s) in 0.05s
+[t=00:00:21.995575][f=-000001] Rapid Pool Cache: loaded 12 files (262 KB, 5.05 MB/s) in 0.05s
+[t=00:00:22.725179][f=-000001] Rapid Pool Cache: loaded 12 files (1701 KB, 31.50 MB/s) in 0.05s
+[t=00:00:23.324338][f=-000001] Rapid Pool Cache: loaded 10 files (2543 KB, 47.10 MB/s) in 0.05s
+[t=00:00:24.461836][f=-000001] Rapid Pool Cache: loaded 11 files (1359 KB, 26.66 MB/s) in 0.05s
+[t=00:00:25.182944][f=-000001] Rapid Pool Cache: loaded 10 files (137 KB, 2.69 MB/s) in 0.05s
+[t=00:00:25.939090][f=-000001] Rapid Pool Cache: loaded 12 files (568 KB, 10.94 MB/s) in 0.05s
+[t=00:00:26.700100][f=-000001] Rapid Pool Cache: loaded 11 files (638 KB, 12.04 MB/s) in 0.05s
+[t=00:00:26.918923][f=-000001] [VSync::SetInterval] interval=4 (standard)
+[t=00:00:27.044588][f=-000001] [VSync::SetInterval] interval=3 (standard)
+[t=00:00:27.342690][f=-000001] Rapid Pool Cache: loaded 11 files (204 KB, 3.86 MB/s) in 0.05s
+[t=00:00:28.059174][f=-000001] Rapid Pool Cache: loaded 11 files (3354 KB, 62.11 MB/s) in 0.05s
+[t=00:00:28.753921][f=-000001] Rapid Pool Cache: loaded 11 files (377 KB, 7.12 MB/s) in 0.05s
+[t=00:00:29.485466][f=-000001] Rapid Pool Cache: loaded 12 files (1014 KB, 18.79 MB/s) in 0.05s
+[t=00:00:30.257622][f=-000001] Rapid Pool Cache: loaded 11 files (760 KB, 13.83 MB/s) in 0.05s
+[t=00:00:31.078855][f=-000001] Rapid Pool Cache: loaded 11 files (370 KB, 6.74 MB/s) in 0.05s
+[t=00:00:31.721898][f=-000001] Rapid Pool Cache: loaded 12 files (120 KB, 2.35 MB/s) in 0.05s
+[t=00:00:32.399777][f=-000001] Rapid Pool Cache: loaded 11 files (2191 KB, 42.13 MB/s) in 0.05s
+[t=00:00:33.029649][f=-000001] Rapid Pool Cache: loaded 11 files (578 KB, 11.34 MB/s) in 0.05s
+[t=00:00:33.657947][f=-000001] Rapid Pool Cache: loaded 12 files (179 KB, 3.38 MB/s) in 0.05s
+[t=00:00:34.379501][f=-000001] Rapid Pool Cache: loaded 7 files (15306 KB, 259.43 MB/s) in 0.06s
+[t=00:00:34.984455][f=-000001] Rapid Pool Cache: loaded 11 files (649 KB, 12.26 MB/s) in 0.05s
+[t=00:00:35.605831][f=-000001] Rapid Pool Cache: loaded 12 files (212 KB, 4.17 MB/s) in 0.05s
+[t=00:00:36.221654][f=-000001] Rapid Pool Cache: loaded 9 files (322 KB, 6.19 MB/s) in 0.05s
+[t=00:00:36.851113][f=-000001] Rapid Pool Cache: loaded 8 files (5710 KB, 103.82 MB/s) in 0.05s
+[t=00:00:37.453274][f=-000001] Rapid Pool Cache: loaded 11 files (288 KB, 5.35 MB/s) in 0.05s
+[t=00:00:37.796630][f=-000001] [Chobby] Chobby Using 207 MB RAM > 200 MB limit, performing garbage collection to 137 MB and adjusting limit to 337 MB
+[t=00:00:38.263439][f=-000001] Rapid Pool Cache: loaded 11 files (593 KB, 11.20 MB/s) in 0.05s
+[t=00:00:38.957916][f=-000001] Rapid Pool Cache: loaded 11 files (836 KB, 16.08 MB/s) in 0.05s
+[t=00:00:39.570376][f=-000001] Rapid Pool Cache: loaded 10 files (90 KB, 1.77 MB/s) in 0.05s
+[t=00:00:40.190868][f=-000001] Rapid Pool Cache: loaded 11 files (214 KB, 3.97 MB/s) in 0.05s
+[t=00:00:40.319748][f=-000001] Scanning: C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/base
+[t=00:00:40.320270][f=-000001] Scanning: C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/maps
+[t=00:00:40.320394][f=-000001] Scanning: C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/games
+[t=00:00:40.320590][f=-000001] Scanning: C:/Program Files/Beyond-All-Reason/data/maps
+[t=00:00:40.323775][f=-000001] Scanning: C:/Program Files/Beyond-All-Reason/data/packages
+[t=00:00:40.332704][f=-000001] Warning: [ArchiveData] version "3" included in name "Asteroid_Mines_V3"
+[t=00:00:40.332795][f=-000001] [~CBufferedArchive][name=C:/Program Files/Beyond-All-Reason/data/maps/asteroid_mines_v3.sd7] 0 bytes cached in 0 files, 0 bytes cached in 0 files
+[t=00:00:41.052496][f=-000001] [~ScopedOnceTimer][CArchiveScanner::ScanAllDirs] 732ms
+[t=00:00:41.563509][f=-000001] Rapid Pool Cache: loaded 12 files (480 KB, 9.23 MB/s) in 0.05s
+[t=00:00:42.165124][f=-000001] Rapid Pool Cache: loaded 11 files (304 KB, 5.85 MB/s) in 0.05s
+[t=00:00:42.891417][f=-000001] Rapid Pool Cache: loaded 10 files (12440 KB, 72.75 MB/s) in 0.17s
+[t=00:00:43.528005][f=-000001] Rapid Pool Cache: loaded 10 files (7384 KB, 144.80 MB/s) in 0.05s
+[t=00:00:44.141868][f=-000001] Rapid Pool Cache: loaded 11 files (559 KB, 10.36 MB/s) in 0.05s
+[t=00:00:44.743578][f=-000001] Rapid Pool Cache: loaded 11 files (4373 KB, 85.75 MB/s) in 0.05s
+[t=00:00:45.348277][f=-000001] Rapid Pool Cache: loaded 12 files (1011 KB, 18.73 MB/s) in 0.05s
+[t=00:00:46.070587][f=-000001] Rapid Pool Cache: loaded 11 files (5678 KB, 109.19 MB/s) in 0.05s
+[t=00:00:46.693862][f=-000001] Rapid Pool Cache: loaded 10 files (9307 KB, 172.36 MB/s) in 0.05s
+[t=00:00:47.294414][f=-000001] Rapid Pool Cache: loaded 13 files (537 KB, 10.15 MB/s) in 0.05s
+[t=00:00:48.011473][f=-000001] Rapid Pool Cache: loaded 13 files (1082 KB, 21.22 MB/s) in 0.05s
+[t=00:00:48.641689][f=-000001] Rapid Pool Cache: loaded 12 files (4344 KB, 74.91 MB/s) in 0.06s
+[t=00:00:49.268455][f=-000001] Rapid Pool Cache: loaded 11 files (277 KB, 5.45 MB/s) in 0.05s
+[t=00:00:49.867037][f=-000001] Rapid Pool Cache: loaded 12 files (128 KB, 2.42 MB/s) in 0.05s
+[t=00:00:50.460607][f=-000001] Rapid Pool Cache: loaded 11 files (39 KB, 0.78 MB/s) in 0.05s
+[t=00:00:51.082018][f=-000001] Rapid Pool Cache: loaded 12 files (145 KB, 2.70 MB/s) in 0.05s
+[t=00:00:51.825815][f=-000001] Rapid Pool Cache: loaded 12 files (543 KB, 10.07 MB/s) in 0.05s
+[t=00:00:52.428766][f=-000001] Rapid Pool Cache: loaded 12 files (251 KB, 4.83 MB/s) in 0.05s
+[t=00:00:53.069967][f=-000001] Rapid Pool Cache: loaded 10 files (2496 KB, 48.02 MB/s) in 0.05s
+[t=00:00:53.686110][f=-000001] Rapid Pool Cache: loaded 12 files (199 KB, 3.84 MB/s) in 0.05s
+[t=00:00:54.429043][f=-000001] Rapid Pool Cache: loaded 12 files (1036 KB, 19.55 MB/s) in 0.05s
+[t=00:00:55.027445][f=-000001] Rapid Pool Cache: loaded 13 files (477 KB, 9.00 MB/s) in 0.05s
+[t=00:00:55.634268][f=-000001] Rapid Pool Cache: loaded 12 files (272 KB, 5.13 MB/s) in 0.05s
+[t=00:00:56.225474][f=-000001] Rapid Pool Cache: loaded 10 files (764 KB, 15.00 MB/s) in 0.05s
+[t=00:00:56.354453][f=-000001] [VSync::SetInterval] interval=4 (standard)
+[t=00:00:56.541594][f=-000001] [VSync::SetInterval] interval=3 (standard)
+[t=00:00:56.996053][f=-000001] Rapid Pool Cache: loaded 12 files (1298 KB, 24.04 MB/s) in 0.05s
+[t=00:00:57.609783][f=-000001] Rapid Pool Cache: loaded 12 files (653 KB, 12.33 MB/s) in 0.05s
+[t=00:00:58.221277][f=-000001] Rapid Pool Cache: loaded 12 files (486 KB, 9.18 MB/s) in 0.05s
+[t=00:00:58.829030][f=-000001] Rapid Pool Cache: loaded 12 files (60 KB, 1.19 MB/s) in 0.05s
+[t=00:00:59.557057][f=-000001] Rapid Pool Cache: loaded 12 files (682 KB, 12.88 MB/s) in 0.05s
+[t=00:01:00.149457][f=-000001] Rapid Pool Cache: loaded 10 files (10392 KB, 203.77 MB/s) in 0.05s
+[t=00:01:00.756632][f=-000001] Rapid Pool Cache: loaded 12 files (574 KB, 11.26 MB/s) in 0.05s
+[t=00:01:01.365884][f=-000001] Rapid Pool Cache: loaded 12 files (2306 KB, 39.77 MB/s) in 0.06s
+[t=00:01:01.960867][f=-000001] Rapid Pool Cache: loaded 12 files (262 KB, 5.16 MB/s) in 0.05s
+[t=00:01:02.699770][f=-000001] Rapid Pool Cache: loaded 6 files (13736 KB, 72.29 MB/s) in 0.19s
+[t=00:01:03.298708][f=-000001] Rapid Pool Cache: loaded 11 files (539 KB, 9.81 MB/s) in 0.05s
+[t=00:01:03.892669][f=-000001] Rapid Pool Cache: loaded 12 files (425 KB, 7.89 MB/s) in 0.05s
+[t=00:01:04.486250][f=-000001] Rapid Pool Cache: loaded 12 files (100 KB, 1.89 MB/s) in 0.05s
+[t=00:01:05.212311][f=-000001] Rapid Pool Cache: loaded 12 files (706 KB, 13.09 MB/s) in 0.05s
+[t=00:01:05.805784][f=-000001] Rapid Pool Cache: loaded 12 files (33 KB, 0.62 MB/s) in 0.05s
+[t=00:01:06.407339][f=-000001] Rapid Pool Cache: loaded 11 files (838 KB, 16.43 MB/s) in 0.05s
+[t=00:01:07.002265][f=-000001] Rapid Pool Cache: loaded 12 files (540 KB, 10.20 MB/s) in 0.05s
+[t=00:01:07.731525][f=-000001] Rapid Pool Cache: loaded 11 files (6775 KB, 36.23 MB/s) in 0.19s
+[t=00:01:08.315158][f=-000001] Rapid Pool Cache: loaded 11 files (195 KB, 3.69 MB/s) in 0.05s
+[t=00:01:08.908392][f=-000001] Rapid Pool Cache: loaded 12 files (274 KB, 5.18 MB/s) in 0.05s
+[t=00:01:09.504825][f=-000001] Rapid Pool Cache: loaded 12 files (579 KB, 10.93 MB/s) in 0.05s
+[t=00:01:10.125233][f=-000001] Rapid Pool Cache: loaded 12 files (380 KB, 7.32 MB/s) in 0.05s
+[t=00:01:10.843625][f=-000001] Rapid Pool Cache: loaded 11 files (102 KB, 2.02 MB/s) in 0.05s
+[t=00:01:11.435367][f=-000001] Rapid Pool Cache: loaded 13 files (321 KB, 6.30 MB/s) in 0.05s
+[t=00:01:12.031399][f=-000001] Rapid Pool Cache: loaded 11 files (2048 KB, 40.16 MB/s) in 0.05s
+[t=00:01:12.617255][f=-000001] Rapid Pool Cache: loaded 12 files (968 KB, 18.62 MB/s) in 0.05s
+[t=00:01:13.213827][f=-000001] Rapid Pool Cache: loaded 12 files (330 KB, 6.00 MB/s) in 0.05s
+[t=00:01:13.935864][f=-000001] Rapid Pool Cache: loaded 10 files (6464 KB, 126.75 MB/s) in 0.05s
+[t=00:01:14.574923][f=-000001] Rapid Pool Cache: loaded 11 files (433 KB, 8.18 MB/s) in 0.05s
+[t=00:01:15.174269][f=-000001] Rapid Pool Cache: loaded 12 files (311 KB, 6.10 MB/s) in 0.05s
+[t=00:01:15.777749][f=-000001] Rapid Pool Cache: loaded 12 files (430 KB, 7.98 MB/s) in 0.05s
+[t=00:01:16.512216][f=-000001] Rapid Pool Cache: loaded 11 files (178 KB, 3.37 MB/s) in 0.05s
+[t=00:01:17.107443][f=-000001] Rapid Pool Cache: loaded 13 files (746 KB, 13.82 MB/s) in 0.05s
+[t=00:01:17.697124][f=-000001] Rapid Pool Cache: loaded 11 files (1407 KB, 27.08 MB/s) in 0.05s
+[t=00:01:18.293681][f=-000001] Rapid Pool Cache: loaded 10 files (11111 KB, 191.57 MB/s) in 0.06s
+[t=00:01:18.934012][f=-000001] Rapid Pool Cache: loaded 12 files (904 KB, 16.75 MB/s) in 0.05s
+[t=00:01:19.666209][f=-000001] Rapid Pool Cache: loaded 12 files (910 KB, 16.55 MB/s) in 0.05s
+[t=00:01:20.251949][f=-000001] Rapid Pool Cache: loaded 12 files (343 KB, 6.36 MB/s) in 0.05s
+[t=00:01:20.859885][f=-000001] Rapid Pool Cache: loaded 13 files (197 KB, 3.80 MB/s) in 0.05s
+[t=00:01:21.467081][f=-000001] Rapid Pool Cache: loaded 11 files (602 KB, 11.81 MB/s) in 0.05s
+[t=00:01:22.069765][f=-000001] Error: Spring 2026.06.12 has crashed.
+[t=00:01:22.115620][f=-000001] Error: DLL information:
+[t=00:01:22.115661][f=-000001] Error: 0x00007ff692b00000	spring
+[t=00:01:22.115668][f=-000001] Error: 0x00007ffa810e0000	ntdll
+[t=00:01:22.115675][f=-000001] Error: 0x00007ffa7fbc0000	KERNEL32
+[t=00:01:22.115681][f=-000001] Error: 0x00007ffa7e750000	KERNELBASE
+[t=00:01:22.115687][f=-000001] Error: 0x00007ffa7b170000	apphelp
+[t=00:01:22.115692][f=-000001] Error: 0x00007ffa7f590000	ADVAPI32
+[t=00:01:22.115698][f=-000001] Error: 0x00007ffa80af0000	msvcrt
+[t=00:01:22.115704][f=-000001] Error: 0x00007ffa7f650000	sechost
+[t=00:01:22.115710][f=-000001] Error: 0x00007ffa80f30000	RPCRT4
+[t=00:01:22.115715][f=-000001] Error: 0x00007ffa7f9b0000	imagehlp
+[t=00:01:22.115721][f=-000001] Error: 0x00007ffa7e300000	ucrtbase
+[t=00:01:22.115727][f=-000001] Error: 0x00007ffa80190000	SHELL32
+[t=00:01:22.115733][f=-000001] Error: 0x00007ffa7e5e0000	msvcp_win
+[t=00:01:22.115739][f=-000001] Error: 0x00007ffa7f700000	USER32
+[t=00:01:22.115745][f=-000001] Error: 0x00007ffa7c960000	IPHLPAPI
+[t=00:01:22.115750][f=-000001] Error: 0x00007ffa7e5b0000	win32u
+[t=00:01:22.115756][f=-000001] Error: 0x00007ffa809c0000	GDI32
+[t=00:01:22.115762][f=-000001] Error: 0x00007ffa7ece0000	gdi32full
+[t=00:01:22.115767][f=-000001] Error: 0x00007ffa7fb50000	SHLWAPI
+[t=00:01:22.115773][f=-000001] Error: 0x00007ffa7ef70000	WS2_32
+[t=00:01:22.115779][f=-000001] Error: 0x00007ffa49ec0000	SDL2
+[t=00:01:22.115784][f=-000001] Error: 0x00007ffa7ee30000	IMM32
+[t=00:01:22.115790][f=-000001] Error: 0x00007ffa7ff50000	ole32
+[t=00:01:22.115796][f=-000001] Error: 0x00007ffa80ba0000	combase
+[t=00:01:22.115801][f=-000001] Error: 0x00007ffa7ee90000	OLEAUT32
+[t=00:01:22.115807][f=-000001] Error: 0x00007ffa7f100000	SETUPAPI
+[t=00:01:22.115814][f=-000001] Error: 0x00007ffa5f440000	libfontconfig-1
+[t=00:01:22.115824][f=-000001] Error: 0x00007ffa49d00000	libfreetype-6
+[t=00:01:22.115830][f=-000001] Error: 0x000000006a1c0000	libIL
+[t=00:01:22.115836][f=-000001] Error: 0x000000006b3c0000	libvorbisfile-3
+[t=00:01:22.115842][f=-000001] Error: 0x00007ffa749a0000	WINMM
+[t=00:01:22.115848][f=-000001] Error: 0x00007ffa787d0000	VERSION
+[t=00:01:22.115854][f=-000001] Error: 0x000000006b600000	OpenAL32
+[t=00:01:22.115860][f=-000001] Error: 0x00007ffa67ad0000	zlib1
+[t=00:01:22.115878][f=-000001] Error: 0x00007ffa791b0000	libgcc_s_seh-1
+[t=00:01:22.115886][f=-000001] Error: 0x00007ffa077d0000	libcurl
+[t=00:01:22.115891][f=-000001] Error: 0x00007ffa7eb60000	CRYPT32
+[t=00:01:22.115897][f=-000001] Error: 0x00007ffa7ee10000	Normaliz
+[t=00:01:22.115903][f=-000001] Error: 0x00007ffa7fed0000	WLDAP32
+[t=00:01:22.115909][f=-000001] Error: 0x00007ffa679e0000	libexpat-1
+[t=00:01:22.115915][f=-000001] Error: 0x00007ffa67ab0000	libintl-8
+[t=00:01:22.115921][f=-000001] Error: 0x00007ffa643f0000	libbz2
+[t=00:01:22.115927][f=-000001] Error: 0x00007ffa59f50000	libpng16-16
+[t=00:01:22.115933][f=-000001] Error: 0x0000000070680000	libogg-0
+[t=00:01:22.115939][f=-000001] Error: 0x00007ffa7e1f0000	bcrypt
+[t=00:01:22.115945][f=-000001] Error: 0x00007ffa60830000	libwinpthread-1
+[t=00:01:22.115951][f=-000001] Error: 0x00007ffa7de90000	cfgmgr32
+[t=00:01:22.115957][f=-000001] Error: 0x00007ffa49c00000	libiconv-2
+[t=00:01:22.115963][f=-000001] Error: 0x000000006d540000	libvorbis-0
+[t=00:01:22.115969][f=-000001] Error: 0x00007ffa26e20000	libharfbuzz-0
+[t=00:01:22.115975][f=-000001] Error: 0x00007ffa15d90000	libglib-2.0-0
+[t=00:01:22.115981][f=-000001] Error: 0x00007ffa4a7a0000	libpcre-1
+[t=00:01:22.115987][f=-000001] Error: 0x00007ffa809f0000	shcore
+[t=00:01:22.115993][f=-000001] Error: 0x00007ffa7b6b0000	dwmapi
+[t=00:01:22.115999][f=-000001] Error: 0x00007ffa7bd80000	Windows.Storage
+[t=00:01:22.116005][f=-000001] Error: 0x00007ffa7b3f0000	uxtheme
+[t=00:01:22.116011][f=-000001] Error: 0x00007ffa71350000	mscms
+[t=00:01:22.116017][f=-000001] Error: 0x00007ffa4a0e0000	icm32
+[t=00:01:22.116023][f=-000001] Error: 0x00007ffa5a9d0000	OPENGL32
+[t=00:01:22.116028][f=-000001] Error: 0x00007ffa5a920000	GLU32
+[t=00:01:22.116037][f=-000001] Error: 0x00007ffa7b4f0000	dxcore
+[t=00:01:22.116046][f=-000001] Error: 0x00007ffa7f9e0000	MSCTF
+[t=00:01:22.116053][f=-000001] Error: 0x00007ffa70d00000	windows.staterepositorycore
+[t=00:01:22.116060][f=-000001] Error: 0x00007ffa5a9a0000	atig6pxx
+[t=00:01:22.116066][f=-000001] Error: 0x00007ff9bec20000	atio6axx
+[t=00:01:22.116071][f=-000001] Error: 0x00007ffa7def0000	DEVOBJ
+[t=00:01:22.116077][f=-000001] Error: 0x00007ffa7e520000	WINTRUST
+[t=00:01:22.116083][f=-000001] Error: 0x00007ffa7d910000	MSASN1
+[t=00:01:22.116089][f=-000001] Error: 0x00007ffa7e460000	bcryptPrimitives
+[t=00:01:22.116095][f=-000001] Error: 0x00007ffa735c0000	amdihk64
+[t=00:01:22.116101][f=-000001] Error: 0x00007ffa7cfc0000	kernel.appcore
+[t=00:01:22.116107][f=-000001] Error: 0x00007ffa7f8f0000	clbcatq
+[t=00:01:22.116113][f=-000001] Error: 0x00007ffa6b0c0000	textinputframework
+[t=00:01:22.116119][f=-000001] Error: 0x00007ffa7ad90000	CoreMessaging
+[t=00:01:22.116125][f=-000001] Error: 0x00007ffa780a0000	CoreUIComponents
+[t=00:01:22.116131][f=-000001] Error: 0x00007ffa77c70000	wintypes
+[t=00:01:22.116137][f=-000001] Error: 0x00007ffa7d8b0000	CRYPTBASE
+[t=00:01:22.116143][f=-000001] Error: 0x00007ffa7b540000	dxgi
+[t=00:01:22.116149][f=-000001] Error: 0x00007ffa7e0b0000	powrprof
+[t=00:01:22.116154][f=-000001] Error: 0x00007ffa7e090000	UMPDC
+[t=00:01:22.116160][f=-000001] Error: 0x00007ffa65690000	d3d12
+[t=00:01:22.116166][f=-000001] Error: 0x00007ff98afc0000	amdxc64
+[t=00:01:22.116173][f=-000001] Error: 0x00007ffa78a20000	directxdatabasehelper
+[t=00:01:22.116179][f=-000001] Error: 0x00007ffa2f370000	D3D12Core
+[t=00:01:22.116185][f=-000001] Error: 0x00007ff9d9b50000	D3DSCache
+[t=00:01:22.116190][f=-000001] Error: 0x00007ffa7d650000	USERENV
+[t=00:01:22.116196][f=-000001] Error: 0x00007ffa7a720000	dcomp
+[t=00:01:22.116203][f=-000001] Error: 0x00007ffa79b20000	Microsoft.Internal.WarpPal
+[t=00:01:22.116209][f=-000001] Error: 0x00007ffa72f80000	MMDevApi
+[t=00:01:22.116215][f=-000001] Error: 0x00007ffa78820000	avrt
+[t=00:01:22.116221][f=-000001] Error: 0x00007ffa61d90000	AUDIOSES
+[t=00:01:22.116227][f=-000001] Error: 0x00007ffa7ba30000	resourcepolicyclient
+[t=00:01:22.116234][f=-000001] Error: 0x00007ffa7b220000	secur32
+[t=00:01:22.116239][f=-000001] Error: 0x00007ffa7d290000	SSPICLI
+[t=00:01:22.116245][f=-000001] Error: 0x00007ffa7ee20000	NSI
+[t=00:01:22.116251][f=-000001] Error: 0x00007ffa74b10000	dhcpcsvc
+[t=00:01:22.116257][f=-000001] Error: 0x00007ffa7d590000	mswsock
+[t=00:01:22.116263][f=-000001] Error: 0x00007ffa65b50000	napinsp
+[t=00:01:22.116268][f=-000001] Error: 0x00007ffa7c9f0000	DNSAPI
+[t=00:01:22.116274][f=-000001] Error: 0x00007ffa7d390000	DSPARSE
+[t=00:01:22.116280][f=-000001] Error: 0x00007ffa64490000	winrnr
+[t=00:01:22.116286][f=-000001] Error: 0x00007ffa5f130000	nlansp_c
+[t=00:01:22.116291][f=-000001] Error: 0x00007ffa64350000	wshbth
+[t=00:01:22.116297][f=-000001] Error: 0x00007ffa74840000	fwpuclnt
+[t=00:01:22.116303][f=-000001] Error: 0x00007ffa77b70000	rasadhlp
+[t=00:01:22.116309][f=-000001] Error: 0x00007ffa0ef60000	medal-hook64-v2
+[t=00:01:22.116315][f=-000001] Error: 0x00007ffa7a4b0000	d3d11
+[t=00:01:22.116321][f=-000001] Error: 0x00007ffa74b40000	amdxx64
+[t=00:01:22.116326][f=-000001] Error: 0x00007ffa73600000	atidxx64
+[t=00:01:22.116332][f=-000001] Error: 0x0000000071e00000	amdenc64
+[t=00:01:22.116338][f=-000001] Error: 0x00007ffa73aa0000	dbghelp
+[t=00:01:22.116344][f=-000001] Error: Exception: Access violation (0xc0000005)
+[t=00:01:22.116350][f=-000001] Error: Exception Address: 0x00007ff693202992
+[t=00:01:22.116361][f=-000001] Error: Stacktrace for Spring 2026.06.12:
+[t=00:01:22.117068][f=-000001] Error: 	[ProgCtr=00007ff693202992 StackPtr=00000058a29fec90 FramePtr=0000000000000000]
+[t=00:01:22.117078][f=-000001] Error: 	(0) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff693202992]
+[t=00:01:22.117085][f=-000001] Error: 	(1) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff693203ae8]
+[t=00:01:22.117092][f=-000001] Error: 	(2) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff6931f9b4a]
+[t=00:01:22.117101][f=-000001] Error: 	(3) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff6931fccbc]
+[t=00:01:22.117108][f=-000001] Error: 	(4) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff69320084d]
+[t=00:01:22.117115][f=-000001] Error: 	(5) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff6932124d3]
+[t=00:01:22.117122][f=-000001] Error: 	(6) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff693200c55]
+[t=00:01:22.117129][f=-000001] Error: 	(7) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff693200ff9]
+[t=00:01:22.117135][f=-000001] Error: 	(8) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff6931f9847]
+[t=00:01:22.117142][f=-000001] Error: 	(9) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff6931fc37e]
+[t=00:01:22.117149][f=-000001] Error: 	(10) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff69320084d]
+[t=00:01:22.117156][f=-000001] Error: 	(11) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff6932124d3]
+[t=00:01:22.117163][f=-000001] Error: 	(12) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff693200c55]
+[t=00:01:22.117170][f=-000001] Error: 	(13) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff693200ff9]
+[t=00:01:22.117176][f=-000001] Error: 	(14) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff6931f9847]
+[t=00:01:22.117183][f=-000001] Error: 	(15) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff692b5afda]
+[t=00:01:22.117190][f=-000001] Error: 	(16) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff692b604aa]
+[t=00:01:22.117196][f=-000001] Error: 	(17) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff692b669c1]
+[t=00:01:22.117203][f=-000001] Error: 	(18) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff693a6ce86]
+[t=00:01:22.117210][f=-000001] Error: 	(19) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff693014af7]
+[t=00:01:22.117217][f=-000001] Error: 	(20) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff692fd5525]
+[t=00:01:22.117223][f=-000001] Error: 	(21) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff693061ea5]
+[t=00:01:22.117230][f=-000001] Error: 	(22) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff693066900]
+[t=00:01:22.117237][f=-000001] Error: 	(23) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff693042f0b]
+[t=00:01:22.117244][f=-000001] Error: 	(24) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff693f971c3]
+[t=00:01:22.117250][f=-000001] Error: 	(25) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff692b01307]
+[t=00:01:22.117257][f=-000001] Error: 	(26) C:\Program Files\Beyond-All-Reason\data\engine\recoil_2026.06.12\spring.exe [0x00007ff692b013fa]
+[t=00:01:22.117264][f=-000001] Error: 	(27) C:\WINDOWS\System32\KERNEL32.DLL [0x000000000002e957]
+[t=00:01:22.117270][f=-000001] Error: 	(28) C:\WINDOWS\SYSTEM32\ntdll.dll [0x00000000000aad6c]
+[t=00:01:22.119857][f=-000001] [WatchDog::DeregisterThread] deregistering controls for thread [main]
+[t=00:01:23.276890][f=-000001] Fatal: [ExitSpringProcess] errorMsg="Spring has crashed:
+  Access violation.
+
+A stacktrace has been written to:
+  C:/Program Files/Beyond-All-Reason/data/infolog.txt" msgCaption="Spring: Unhandled exception" mainThread=1
+[t=00:01:23.277003][f=-000001] Error: [Watchdog::ClearTimer(id)] Invalid thread 4 (_threadId=0000000000000000)
+[t=00:01:23.277052][f=-000001] [SpringApp::Kill][1] fromRun=0
+[t=00:01:23.277057][f=-000001] [ThreadPool::SetThreadCount][1] wanted=0 current=8 maximum=16 (init=0)
+[t=00:01:23.285905][f=-000001] 	[async=0] threads=8 tasks=105 {sum,avg}{exec,wait}time={{27.692, 0.264}, {189.621, 1.806}}ms
+[t=00:01:23.285921][f=-000001] 		thread=1 tasks=15 {sum,min,max,avg}{exec,wait}time={{4.492, 0.071, 0.826, 0.299}, {1.709, 0.001, 1.610, 0.114}}ms
+[t=00:01:23.285928][f=-000001] 		thread=2 tasks=15 {sum,min,max,avg}{exec,wait}time={{3.724, 0.000, 0.812, 0.248}, {32.527, 0.000, 30.693, 2.168}}ms
+[t=00:01:23.285946][f=-000001] 		thread=3 tasks=15 {sum,min,max,avg}{exec,wait}time={{3.908, 0.000, 0.826, 0.261}, {30.845, 0.000, 30.700, 2.056}}ms
+[t=00:01:23.285952][f=-000001] 		thread=4 tasks=15 {sum,min,max,avg}{exec,wait}time={{3.832, 0.000, 0.785, 0.255}, {30.933, 0.000, 30.693, 2.062}}ms
+[t=00:01:23.285958][f=-000001] 		thread=5 tasks=15 {sum,min,max,avg}{exec,wait}time={{3.922, 0.000, 0.808, 0.261}, {31.058, 0.000, 30.682, 2.071}}ms
+[t=00:01:23.285967][f=-000001] 		thread=6 tasks=15 {sum,min,max,avg}{exec,wait}time={{3.908, 0.000, 0.778, 0.261}, {31.219, 0.000, 30.694, 2.081}}ms
+[t=00:01:23.285973][f=-000001] 		thread=7 tasks=15 {sum,min,max,avg}{exec,wait}time={{3.905, 0.000, 0.781, 0.260}, {31.330, 0.001, 30.707, 2.089}}ms
+[t=00:01:23.285978][f=-000001] 	[async=1] threads=8 tasks=0 {sum,avg}{exec,wait}time={{0.000, 0.000}, {0.000, 0.000}}ms
+[t=00:01:23.285985][f=-000001] [ThreadPool::SetThreadCount][2] workers=0
+[t=00:01:23.285989][f=-000001] [SpringApp::Kill][2]
+[t=00:01:23.286044][f=-000001] [Sound] [Sound::Kill] soundThread.joinable()=1
+[t=00:01:23.302658][f=-000001] [WatchDog::DeregisterThread] deregistering controls for thread [audio]
+[t=00:01:23.302677][f=-000001] [Sound] [Sound::UpdateThread][3] #sources=255 #items=1
+[t=00:01:23.303072][f=-000001] [Sound] [Sound::UpdateThread][4] ctx=000001e8c0d3ecd0 dev=000001e8c0d30b10
+[t=00:01:23.303181][f=-000001] [Sound] [Sound::UpdateThread][5] ctx=000001e8c0d3ecd0 dev=000001e8c0d30b10
+[t=00:01:23.303201][f=-000001] [Sound] [Sound::Cleanup][SDL_CloseAudioDevice(2)]
+[t=00:01:23.332479][f=-000001] [Sound] [Sound::Cleanup][alcDestroyContext(000001e8c0d3ecd0)]
+[t=00:01:23.332986][f=-000001] [Sound] [Sound::Cleanup][alcCloseDevice(000001e8c0d30b10)]
+[t=00:01:23.333030][f=-000001] [Sound] [Sound::UpdateThread][6]
+[t=00:01:23.340916][f=-000001] Scenario Window GetConfigData
+[t=00:01:23.348399][f=-000001] Rapid Pool Cache: Done with 12700 files (1325541 KB, 21.61 MB/s) in 61.35s
+[t=00:01:23.348535][f=-000001] [Chobby] Chobby Shutdown
+[t=00:01:23.431693][f=-000001] [LuaMemPool::LogStats][handle=LuaMenu (unsynced)] index=0 numAllocs{int+, int-, ext, int_p}={0, 0, 4537599, 0.0} allocedSize{int+, int-, ext}={0, 0, 2071333129}, avgAllocTime{int+, int-, ext}={0.0000, 0.0000, 0.0000}, cumAllocTime={int+, int-, ext}={0, 0, 0}
+[t=00:01:23.431754][f=-000001] [SpringApp::Kill][3]
+[t=00:01:23.431759][f=-000001] [SpringApp::Kill][4] font=000001e8ea765040
+[t=00:01:23.432314][f=-000001] [SpringApp::Kill][5]
+[t=00:01:23.433560][f=-000001] [SpringApp::Kill][6]
+[t=00:01:23.433583] [SpringApp::Kill][7]
+[t=00:01:23.433606] [RenderBuffer::KillStatic] Type = VA_TYPE_0 max size/init. capacity/curr. capacity: VBO = {0, 65536, 65536}, EBO = {0, 131072, 131072}
+[t=00:01:23.433612] [RenderBuffer::KillStatic] Type = VA_TYPE_C max size/init. capacity/curr. capacity: VBO = {0, 1048576, 1048576}, EBO = {0, 2097152, 2097152}
+[t=00:01:23.433617] [RenderBuffer::KillStatic] Type = VA_TYPE_N max size/init. capacity/curr. capacity: VBO = {0, 1024, 1024}, EBO = {0, 2048, 2048}
+[t=00:01:23.433625] [RenderBuffer::KillStatic] Type = VA_TYPE_T max size/init. capacity/curr. capacity: VBO = {0, 1048576, 1048576}, EBO = {0, 2097152, 2097152}
+[t=00:01:23.433631] [RenderBuffer::KillStatic] Type = VA_TYPE_T4 max size/init. capacity/curr. capacity: VBO = {0, 65536, 65536}, EBO = {0, 262144, 262144}
+[t=00:01:23.433636] [RenderBuffer::KillStatic] Type = VA_TYPE_TN max size/init. capacity/curr. capacity: VBO = {0, 65536, 65536}, EBO = {0, 131072, 131072}
+[t=00:01:23.433646] [RenderBuffer::KillStatic] Type = VA_TYPE_TC max size/init. capacity/curr. capacity: VBO = {0, 1048576, 1048576}, EBO = {0, 2097152, 2097152}
+[t=00:01:23.433652] [RenderBuffer::KillStatic] Type = VA_TYPE_TC3 max size/init. capacity/curr. capacity: VBO = {0, 1024, 1024}, EBO = {0, 2048, 2048}
+[t=00:01:23.433657] [RenderBuffer::KillStatic] Type = VA_TYPE_PROJ max size/init. capacity/curr. capacity: VBO = {0, 1048576, 1048576}, EBO = {0, 2097152, 2097152}
+[t=00:01:23.433662] [RenderBuffer::KillStatic] Type = VA_TYPE_TNT max size/init. capacity/curr. capacity: VBO = {0, 0, 0}, EBO = {0, 0, 0}
+[t=00:01:23.433684] [RenderBuffer::KillStatic] Type = VA_TYPE_2D0 max size/init. capacity/curr. capacity: VBO = {0, 65536, 65536}, EBO = {0, 131072, 131072}
+[t=00:01:23.433689] [RenderBuffer::KillStatic] Type = VA_TYPE_2DC max size/init. capacity/curr. capacity: VBO = {0, 65536, 65536}, EBO = {0, 131072, 131072}
+[t=00:01:23.433694] [RenderBuffer::KillStatic] Type = VA_TYPE_2DT max size/init. capacity/curr. capacity: VBO = {4, 1048576, 1048576}, EBO = {6, 2097152, 2097152}
+[t=00:01:23.433701] [RenderBuffer::KillStatic] Type = VA_TYPE_2DTC max size/init. capacity/curr. capacity: VBO = {0, 65536, 65536}, EBO = {0, 131072, 131072}
+[t=00:01:23.433706] [RenderBuffer::KillStatic] Type = VA_TYPE_2DTC3 max size/init. capacity/curr. capacity: VBO = {0, 1024, 1024}, EBO = {0, 2048, 2048}
+[t=00:01:23.498027] [LuaSocket] [~CLuaSocketRestrictions] dumping luasocket rules:
+[t=00:01:23.498061] [LuaSocket] TCP_CONNECT ALLOW * -1
+[t=00:01:23.498080] [LuaSocket] TCP_LISTEN  ALLOW * -1
+[t=00:01:23.498083] [LuaSocket] UDP_LISTEN  ALLOW * -1
+[t=00:01:23.499851] [VFS] [SpringVFS::DeleteArchives<this=000001e8beea0080>]
+[t=00:01:23.499862] [VFS] [SpringVFS::DeleteArchives<this=000001e8beea0080>(section=0)] #archives[section]=0 #files[section]=0
+[t=00:01:23.499868] [VFS] [SpringVFS::DeleteArchives<this=000001e8beea0080>(section=1)] #archives[section]=0 #files[section]=0
+[t=00:01:23.499873] [VFS] [SpringVFS::DeleteArchives<this=000001e8beea0080>(section=2)] #archives[section]=2 #files[section]=330
+[t=00:01:23.499884] [VFS] 	archive=C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/base/spring/bitmaps.sdz (000001e8e96e1900)
+[t=00:01:23.499912] [~CBufferedArchive][name=C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/base/spring/bitmaps.sdz] 0 bytes cached in 0 files, 0 bytes cached in 0 files
+[t=00:01:23.499929] [VFS] 	archive=C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/base/springcontent.sdz (000001e8bf8f0e80)
+[t=00:01:23.499951] [~CBufferedArchive][name=C:/Program Files/Beyond-All-Reason/data/engine/recoil_2026.06.12/base/springcontent.sdz] 0 bytes cached in 0 files, 0 bytes cached in 0 files
+[t=00:01:23.499967] [VFS] [SpringVFS::DeleteArchives<this=000001e8beea0080>(section=3)] #archives[section]=1 #files[section]=2728
+[t=00:01:23.499972] [VFS] 	archive=C:/Program Files/Beyond-All-Reason/data/packages/dbcd8754c3b2a78dfe90f9e0fcd7def5.sdp (000001e8e99a0b00)
+[t=00:01:23.499999] [~CPoolArchive] archiveFile="C:/Program Files/Beyond-All-Reason/data/packages/dbcd8754c3b2a78dfe90f9e0fcd7def5.sdp" numZipFiles=2728 sumInflSize=407975kb sumReadTime=1348ms
+[t=00:01:23.500009] 	file="luamenu/configs/gameconfig/byar/lobbymusic/original/matteo dell'acqua - foobar (menu ver.) (intro).ogg" indx=316 inflSize=4285kb readTime=19ms
+[t=00:01:23.500015] 	file="libs/chiliui/chili/headers/backwardcompability.lua" indx=102 inflSize=0kb readTime=9ms
+[t=00:01:23.500020] 	file="libs/chiliui/chili/handlers/taskhandler.lua" indx=98 inflSize=3kb readTime=7ms
+[t=00:01:23.500026] 	file="libs/i18n/luamenu/widgets/i18nlib/i18n/plural.lua" indx=228 inflSize=7kb readTime=7ms
+[t=00:01:23.500030] 	file="luamenu/configs/gameconfig/byar/skinning/headinglarge.png" indx=1706 inflSize=1057kb readTime=7ms
+[t=00:01:23.500035] 	file="libs/chiliui/chili/headers/util.lua" indx=107 inflSize=10kb readTime=7ms
+[t=00:01:23.500038] 	file="luamenu/configs/gameconfig/byar/skinning/loadpictures/bar4k_loadingscreen_5.jpg" indx=1717 inflSize=422kb readTime=7ms
+[t=00:01:23.500049] 	file="luamenu/widgets/chili/skins/darkhivesquare/skin.lua" indx=2306 inflSize=0kb readTime=7ms
+[t=00:01:23.500053] 	file="libs/chiliui/chili/core.lua" indx=93 inflSize=1kb readTime=7ms
+[t=00:01:23.500057] 	file="libs/chiliui/chili/handlers/skinhandler.lua" indx=97 inflSize=5kb readTime=7ms
+[t=00:01:23.500130] [~CBufferedArchive][name=C:/Program Files/Beyond-All-Reason/data/packages/dbcd8754c3b2a78dfe90f9e0fcd7def5.sdp] 0 bytes cached in 0 files, 0 bytes cached in 0 files
+[t=00:01:23.500227] [VFS] [SpringVFS::DeleteArchives<this=000001e8beea0080>(section=4)] #archives[section]=0 #files[section]=18376
+[t=00:01:23.500255] [VFS] [SpringVFS::DeleteArchives<this=000001e8beea0080>(section=5)] #archives[section]=0 #files[section]=0
+[t=00:01:23.500260] [VFS] [SpringVFS::DeleteArchives<this=000001e8beea0080>(section=6)] #archives[section]=0 #files[section]=0
+[t=00:01:23.500264] [VFS] [SpringVFS::DeleteArchives<this=000001e8beea0080>(section=7)] #archives[section]=0 #files[section]=0
+[t=00:01:23.500272] [VFS] [SpringVFS::DeleteArchives<this=000001e8beea0080>(section=8)] #archives[section]=0 #files[section]=0
+[t=00:01:23.500402] [SpringApp::Kill][8]
+[t=00:01:23.500406] Error: [Watchdog::DeregisterThread] invalid thread number 0
+[t=00:01:23.500413] [WatchDog::Uninstall][1] hangDetectorThread=00007ff694479c90 (joinable=1)
+[t=00:01:23.500417] [WatchDog::Uninstall][2]
+[t=00:01:24.210269] [WatchDog::Uninstall][3]
+[t=00:01:24.210289] [SpringApp::Kill][9]
